@@ -3,6 +3,7 @@ using UnityEngine;
 public class GameData : MonoBehaviour
 {
     public static GameData Instance { get; private set; }
+    public int cultMembers = 0;
 
     private void Awake() 
     { 
@@ -18,6 +19,6 @@ public class GameData : MonoBehaviour
         } 
     }
     
-    
+
 
 }
