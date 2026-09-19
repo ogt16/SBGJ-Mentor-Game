@@ -41,6 +41,8 @@ public class DayPerson : MonoBehaviour
 
     public void Influence(float power)
     {
+        if (state == DayPersonState.Recruited) return;
+
         progress += power;
         Debug.Log(progress);
         if (progress >= 100)
