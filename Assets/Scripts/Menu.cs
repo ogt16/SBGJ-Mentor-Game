@@ -1,7 +1,10 @@
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
+    SceneAsset DayScene;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -12,5 +15,10 @@ public class Menu : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void PlayButtonPressed()
+    {
+        SceneManager.LoadScene("Day");
     }
 }
