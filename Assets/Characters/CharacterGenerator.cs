@@ -9,7 +9,7 @@ public class CharacterGenerator : MonoBehaviour
     // spawn the created characters
 
     // Enumerators
-    public enum Occupation {Florist, Butcher, Doctor, Unemployed, Accountant, Plumber, CEO, Firefighter, Chef, Teacher, Writer, Singer} // these are all the job roles a character can have
+    public enum Occupation {Florist, Butcher, Doctor, Unemployed, Accountant, Plumber, CEO, Firefighter, Chef, Teacher, Writer, Singer, Redditor, Politician, Landlord} // these are all the job roles a character can have
     public enum Preferences {Flowers, Videogames, Books, Painting, Pottery, Yoga, Chess} // these are all the things characters can like/ dislike
     public enum PositiveTrait {Charismatic, Honest, Optimistic, Calm, Obedient, Kind, Friendly, Wise, Efficient, Loyal, Patient}
     public enum NegativeTrait {Lazy, Insomniac, Nosey, Thanatophobic, Foolish, Liar, Jealous, Rebellious, Selfish, Fussy, Needy}
@@ -99,6 +99,11 @@ public class CharacterGenerator : MonoBehaviour
         {
             NewCharacterData.Flaws.Add((NegativeTrait) Random.Range(0, System.Enum.GetNames(typeof(NegativeTrait)).Length));
         }
+
+        //Setting randomised colour
+        NewCharacterData.SpriteColour = new Color32((byte)Random.Range(1,256), (byte)Random.Range(1,256), (byte)Random.Range(1,256), 255);
+        NewCharacter.transform.Find("Square").transform.gameObject.GetComponent<SpriteRenderer>().color = NewCharacterData.SpriteColour;
+
 
         Debug.Log($"Creating new character: {NewCharacterData.FirstName} {NewCharacterData.LastName}");
     }

@@ -8,6 +8,7 @@ public class CharacterData : MonoBehaviour
     public string FirstName;
     public string LastName;
     public CharacterGenerator.Occupation _Occupation;
+    public Color SpriteColour;
     public List<CharacterGenerator.Preferences> Likes        = new List<CharacterGenerator.Preferences>();
     public List<CharacterGenerator.Preferences> Dislikes     = new List<CharacterGenerator.Preferences>();
     public List<CharacterGenerator.PositiveTrait> Virtues    = new List<CharacterGenerator.PositiveTrait>();

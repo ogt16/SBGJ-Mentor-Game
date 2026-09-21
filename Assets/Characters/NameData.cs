@@ -44,7 +44,7 @@ public class NameData
         "Reggie",
         "Ezra",
         "Ronnie",
-        "Alexander",
+        "Alex",
         "Jacob",
         "James",
         "Hudson",
@@ -71,6 +71,7 @@ public class NameData
         "Musa",
         "Yusuf",
         "Samuel",
+        "Marlowe",
         "Myles",
         "Liam",
         "Elias",
@@ -215,6 +216,7 @@ public class NameData
         "Jones",
         "Cooper",
         "Lodge",
+        "Baker",
         "Andrews",
         "Blossom",
         "Williams",
@@ -238,5 +240,6 @@ public class NameData
         "Jackson",
         "Clarke",
         "Max",
+        "Hitchman"
     };
 }
