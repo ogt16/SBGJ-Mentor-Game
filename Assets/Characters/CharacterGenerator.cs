@@ -102,8 +102,8 @@ public class CharacterGenerator : MonoBehaviour
 
         //Setting randomised colour
         NewCharacterData.SpriteColour = new Color32((byte)Random.Range(1,256), (byte)Random.Range(1,256), (byte)Random.Range(1,256), 255);
-        NewCharacter.transform.Find("Square").transform.gameObject.GetComponent<SpriteRenderer>().color = NewCharacterData.SpriteColour;
 
+        NewCharacterData.InitialiseCharacter();
 
         Debug.Log($"Creating new character: {NewCharacterData.FirstName} {NewCharacterData.LastName}");
     }
