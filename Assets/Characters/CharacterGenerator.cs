@@ -16,6 +16,26 @@ public class CharacterGenerator : MonoBehaviour
 
     public GameObject CharacterPrefab;
 
+    // Initial spawn rates of the occupations. These can be changed from upgrades
+    private Dictionary<Occupation, int> JobSpawnRates = new Dictionary<Occupation, int>
+    {
+        [Occupation.Florist]     = 1,
+        [Occupation.Butcher]     = 1,
+        [Occupation.Doctor]      = 1,
+        [Occupation.Unemployed]  = 3,
+        [Occupation.Accountant]  = 1,
+        [Occupation.Plumber]     = 1,
+        [Occupation.CEO]         = 0,
+        [Occupation.Firefighter] = 1,
+        [Occupation.Chef]        = 1,
+        [Occupation.Teacher]     = 1,
+        [Occupation.Writer]      = 1,
+        [Occupation.Singer]      = 1,
+        [Occupation.Redditor]    = 1,
+        [Occupation.Politician]  = 0,
+        [Occupation.Landlord]    = 1,
+    };
+
 
     [ContextMenu("Generate Character")] // so we can create characters from the editor without having to run in game for testing purposes
     public void GenerateCharacter()
@@ -38,11 +58,18 @@ public class CharacterGenerator : MonoBehaviour
         NewCharacterData.FirstName       = NameData.FirstNames[Random.Range(0, NameData.FirstNames.Length)];
         NewCharacterData.LastName        = NameData.LastNames[Random.Range(0, NameData.LastNames.Length)];
 
-        //Occupation
-        int NumOfJobs                    = System.Enum.GetNames(typeof(Occupation)).Length;
-        NewCharacterData._Occupation     = (Occupation)Random.Range(0,NumOfJobs);
+        //Occupation (influenced by spawn weights dictionary)
+        List<Occupation> occupations     = new List<Occupation>();
+        foreach(KeyValuePair<Occupation, int> Job in JobSpawnRates)
+        {
+            for(int i = 0; i < Job.Value; i ++)
+            {
+                occupations.Add(Job.Key);
+            }
+        }
 
-        List<int> PreferencesUsed = new List<int>(); // there shouldnt be repeats in the likes and dislikes list AND there shouldnt be a like in the dislike list
+        NewCharacterData._Occupation     = occupations[Random.Range(0, occupations.Count)];
+        List<int> PreferencesUsed        = new List<int>(); // there shouldnt be repeats in the likes and dislikes list AND there shouldnt be a like in the dislike list
 
         // CHARACTER LIKES
         int TotalLikes = Random.Range(1,3);
@@ -88,14 +115,14 @@ public class CharacterGenerator : MonoBehaviour
 
         // Virtues
         int VirtueChance = Random.Range(0, 101);
-        if(VirtueChance <= 25) // flat 20% chance BUT we can change this to a variable or an influence from upgrades
+        if(VirtueChance <= 25) // flat 25% chance BUT we can change this to a variable or an influence from upgrades
         {
             NewCharacterData.Virtues.Add((PositiveTrait) Random.Range(0, System.Enum.GetNames(typeof(PositiveTrait)).Length));
         }
 
         //Flaws
         int FlawChance = Random.Range(0, 101);
-        if(FlawChance <= 25) // flat 20% chance BUT we can change this to a variable or an influence from upgrades
+        if(FlawChance <= 25) // flat 25% chance BUT we can change this to a variable or an influence from upgrades
         {
             NewCharacterData.Flaws.Add((NegativeTrait) Random.Range(0, System.Enum.GetNames(typeof(NegativeTrait)).Length));
         }
@@ -103,6 +130,7 @@ public class CharacterGenerator : MonoBehaviour
         //Setting randomised colour
         NewCharacterData.SpriteColour = new Color32((byte)Random.Range(1,256), (byte)Random.Range(1,256), (byte)Random.Range(1,256), 255);
 
+        // setup the information panel and all that
         NewCharacterData.InitialiseCharacter();
 
         Debug.Log($"Creating new character: {NewCharacterData.FirstName} {NewCharacterData.LastName}");
