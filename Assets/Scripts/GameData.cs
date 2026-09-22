@@ -3,9 +3,6 @@ using UnityEngine;
 public class GameData : MonoBehaviour
 {
     public static GameData Instance { get; private set; }
-    public int cultMembers = 0;
-    public float influenceRadius = 3;
-    public float influencePower = 20;
 
     private void Awake() 
     { 
