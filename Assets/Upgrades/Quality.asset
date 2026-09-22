@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0809b619d6a34d246ac246a18089fc9f, type: 3}
-  m_Name: TestUpgrade
+  m_Name: Quality
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade
-  DisplayName: Upgrade Test Data
+  DisplayName: 
   Icon: {fileID: 0}
-  OccupationRequirements: 000000000000000000000000
+  OccupationRequirements: 
   VirtueRequirements: 
-  FlawRequirements: 
+  FlawRequirements: 090000000900000009000000
