@@ -38,7 +38,7 @@ public class CharacterGenerator : MonoBehaviour
 
 
     [ContextMenu("Generate Character")] // so we can create characters from the editor without having to run in game for testing purposes
-    public void GenerateCharacter()
+    public GameObject GenerateCharacter()
     {
         /*
         Creation rules
@@ -134,5 +134,6 @@ public class CharacterGenerator : MonoBehaviour
         NewCharacterData.InitialiseCharacter();
 
         Debug.Log($"Creating new character: {NewCharacterData.FirstName} {NewCharacterData.LastName}");
+        return NewCharacter;
     }
 }
