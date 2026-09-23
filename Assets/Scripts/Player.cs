@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     float walkSpeed = 10;
     Rigidbody2D rb;
+    float dayLength = 120;
+    float influenceRadius;
 
     List<GameObject> collidingWithTrigger;
 

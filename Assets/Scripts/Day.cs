@@ -10,11 +10,12 @@ public class Day : MonoBehaviour
 
     int droneQuota = 5;
     List<GameObject> drones;
+    float DayLimit = 120;
 
     private void Start()
     {
         drones = new List<GameObject>();
-
+        //Set DayLimit from Player
         while (drones.Count < droneQuota)
         {
             SpawnNewDrone();
