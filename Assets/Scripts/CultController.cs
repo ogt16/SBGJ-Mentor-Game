@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,7 @@ public class CultController : MonoBehaviour
 
     [Header("UI Elements")]
     public GameObject InformationPane;
+    public GameObject RitualUpgradeScreen;
     public GameObject FollowerContainer;
     public GameObject FollowerCardPrefab;
 
@@ -56,7 +58,7 @@ public class CultController : MonoBehaviour
             // parent to the carousel itself
             NewCard.transform.SetParent(FollowerContainer.transform);
 
-            NewCard.transform.localPosition                      = new Vector2(NewCard.GetComponent<RectTransform>().rect.width + (i * 150), 0);
+            NewCard.transform.localPosition                      = new Vector2(NewCard.GetComponent<RectTransform>().rect.width + (i * 150) - 830, 0);
             NewCard.GetComponent<UnityEngine.UI.Image>().color   = CardData.SpriteColour;
 
             // let the follower card access this manager so it can tell it when a card is being hovered
@@ -80,24 +82,51 @@ public class CultController : MonoBehaviour
         SetupFollowerCards(Followers);
     }
 
-    public void UpdateInformationPane(CharacterData FollowerData)
+    public void UpdateInformationPane([Optional] CharacterData FollowerData)
     {
-        InformationPane.transform.Find("Name").GetComponent<TextMeshProUGUI>().SetText($"{FollowerData.FirstName} {FollowerData.LastName}");
-        InformationPane.transform.Find("Occupation").GetComponent<TextMeshProUGUI>().SetText($"{FollowerData._Occupation}");
+        if(FollowerData)
+        {
+            InformationPane.transform.Find("Name").GetComponent<TextMeshProUGUI>().SetText($"{FollowerData.FirstName} {FollowerData.LastName}");
+            InformationPane.transform.Find("Occupation").GetComponent<TextMeshProUGUI>().SetText($"{FollowerData._Occupation}");
 
-        // likes and dislikes
-        if(FollowerData.Likes.Count > 1){InformationPane.transform.Find("Likes").GetComponent<TextMeshProUGUI>().SetText($"Likes: {FollowerData.Likes[0]}, {FollowerData.Likes[1]}");}
-        else{InformationPane.transform.Find("Likes").GetComponent<TextMeshProUGUI>().SetText($"Likes: {FollowerData.Likes[0]}");}
+            // likes and dislikes
+            if(FollowerData.Likes.Count > 1){InformationPane.transform.Find("Likes").GetComponent<TextMeshProUGUI>().SetText($"Likes: {FollowerData.Likes[0]}, {FollowerData.Likes[1]}");}
+            else{InformationPane.transform.Find("Likes").GetComponent<TextMeshProUGUI>().SetText($"Likes: {FollowerData.Likes[0]}");}
 
-        if(FollowerData.Dislikes.Count > 1){InformationPane.transform.Find("Dislikes").GetComponent<TextMeshProUGUI>().SetText($"Dislikes: {FollowerData.Dislikes[0]}, {FollowerData.Dislikes[1]}");}
-        else{InformationPane.transform.Find("Dislikes").GetComponent<TextMeshProUGUI>().SetText($"Dislikes: {FollowerData.Dislikes[0]}");}
-        
-        if(FollowerData.Virtues.Count > 0){InformationPane.transform.Find("Virtue").GetComponent<TextMeshProUGUI>().SetText($"{FollowerData.Virtues[0].ToString().ToUpper()}");}
-        else{{InformationPane.transform.Find("Virtue").GetComponent<TextMeshProUGUI>().SetText($"");}}
+            if(FollowerData.Dislikes.Count > 1){InformationPane.transform.Find("Dislikes").GetComponent<TextMeshProUGUI>().SetText($"Dislikes: {FollowerData.Dislikes[0]}, {FollowerData.Dislikes[1]}");}
+            else{InformationPane.transform.Find("Dislikes").GetComponent<TextMeshProUGUI>().SetText($"Dislikes: {FollowerData.Dislikes[0]}");}
+            
+            if(FollowerData.Virtues.Count > 0){InformationPane.transform.Find("Virtue").GetComponent<TextMeshProUGUI>().SetText($"{FollowerData.Virtues[0].ToString().ToUpper()}");}
+            else{{InformationPane.transform.Find("Virtue").GetComponent<TextMeshProUGUI>().SetText($"");}}
 
-        if(FollowerData.Flaws.Count > 0){InformationPane.transform.Find("Flaw").GetComponent<TextMeshProUGUI>().SetText($"{FollowerData.Flaws[0].ToString().ToUpper()}");}
-        else{{InformationPane.transform.Find("Flaw").GetComponent<TextMeshProUGUI>().SetText($"");}}
-        
+            if(FollowerData.Flaws.Count > 0){InformationPane.transform.Find("Flaw").GetComponent<TextMeshProUGUI>().SetText($"{FollowerData.Flaws[0].ToString().ToUpper()}");}
+            else{{InformationPane.transform.Find("Flaw").GetComponent<TextMeshProUGUI>().SetText($"");}}
+        }
+        else
+        {
+            InformationPane.transform.Find("Name").GetComponent<TextMeshProUGUI>().SetText($"YOU");
+            InformationPane.transform.Find("Occupation").GetComponent<TextMeshProUGUI>().SetText($"Stat 1: ______");
+            InformationPane.transform.Find("Likes").GetComponent<TextMeshProUGUI>().SetText($"Stat 2: ______");
+            InformationPane.transform.Find("Dislikes").GetComponent<TextMeshProUGUI>().SetText($"Stat 3: ______");
+            InformationPane.transform.Find("Virtue").GetComponent<TextMeshProUGUI>().SetText($"Stat 4: ______");
+            InformationPane.transform.Find("Flaw").GetComponent<TextMeshProUGUI>().SetText($"Stat 5: ______");
+        }
+    }
+
+    public void ToggleRitualUpgradeScreen(bool ShouldOpen)
+    {
+        //if given time it would be a nice addition to animate this sliding onto the screen
+
+        if(ShouldOpen)
+        {
+            RitualUpgradeScreen.SetActive(true);
+
+        }
+        else
+        {
+            //hide it
+            RitualUpgradeScreen.SetActive(false);
+        }
     }
 
 

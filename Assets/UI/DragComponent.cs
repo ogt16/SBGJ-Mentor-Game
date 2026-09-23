@@ -32,7 +32,6 @@ public class DragComponent : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("On Hover");
         // update the information pane to the character data of this follower card
         ControllerReference.UpdateInformationPane(transform.gameObject.GetComponent<CharacterData>());
     }
@@ -41,7 +40,7 @@ public class DragComponent : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
     {
         if(!InDrag)
         {
-            Debug.Log("Hover end");
+            ControllerReference.UpdateInformationPane();
         }
     }
 
