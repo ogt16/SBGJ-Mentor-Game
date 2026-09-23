@@ -1,4 +1,5 @@
 
+using JetBrains.Annotations;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,6 +19,7 @@ public class Day : MonoBehaviour
         drones = new List<GameObject>();
         //Apply Day Length upgrades
         DayLimit = player.dayLength;
+        player.passiveFollowerTimer = 60;
         while (drones.Count < droneQuota)
         {
             SpawnNewDrone();
@@ -55,6 +57,12 @@ public class Day : MonoBehaviour
         {
             SpawnNewDrone();
         }
+
+        while (player.passiveFollowerCount>=1)
+        {
+            player.passiveFollowerCount--;
+            SpawnNewPassiveFollower();
+        }
     }
 
     void SpawnNewDrone()
@@ -65,6 +73,15 @@ public class Day : MonoBehaviour
         newDrone.GetComponent<CharacterData>().influence = player.startingInfluence;
         newDrone.transform.position = SelectSpawnPosition();
         drones.Add(newDrone);
+    }
+
+    void SpawnNewPassiveFollower()
+    {
+        GameObject newFollower = characterGenerator.GenerateCharacter();
+        newFollower.GetComponent<CharacterData>().influence = 100;
+        GameData.Instance.AddFollower(newFollower);
+        newFollower.gameObject.SetActive(false);
+
     }
 
     Vector2 SelectSpawnPosition()

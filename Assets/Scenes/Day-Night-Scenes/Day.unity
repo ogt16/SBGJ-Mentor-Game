@@ -1725,6 +1725,26 @@ PrefabInstance:
       propertyPath: dayLength
       value: 120
       objectReference: {fileID: 0}
+    - target: {fileID: 5139863855903539489, guid: 50dc53465739cf640ba0f9fc92112283, type: 3}
+      propertyPath: walkSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139863855903539489, guid: 50dc53465739cf640ba0f9fc92112283, type: 3}
+      propertyPath: influenceSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139863855903539489, guid: 50dc53465739cf640ba0f9fc92112283, type: 3}
+      propertyPath: startingInfluence
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139863855903539489, guid: 50dc53465739cf640ba0f9fc92112283, type: 3}
+      propertyPath: passiveFollowerGain
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139863855903539489, guid: 50dc53465739cf640ba0f9fc92112283, type: 3}
+      propertyPath: passiveFollowerTimer
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 5273200213035686159, guid: 50dc53465739cf640ba0f9fc92112283, type: 3}
       propertyPath: m_Name
       value: Player

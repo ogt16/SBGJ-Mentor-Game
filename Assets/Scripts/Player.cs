@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,22 +7,26 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     Rigidbody2D rb;
+    bool daytime = true;
 
     //Upgradable Stats + starting values
     public float influenceRadius;
     public float droneSpawnRate;
     public float influenceSpeed;
-    public float dayLength = 10;
+    public float dayLength;
     public float quality;
-    public float passiveFollowerGain = 0;
-    public float startingInfluence = 0;
-    public float walkSpeed = 10;
+    public float passiveFollowerGain;
+    public float startingInfluence;
+    public float walkSpeed;
     public float skillCheckDifficulty;
     public float skillCheckPerfectReward;
     public float skillCheckRecovery;
     public float skillCheckFrequency;
 
     List<GameObject> collidingWithTrigger;
+
+    public float passiveFollowerCount;
+    public float passiveFollowerTimer = 60;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,7 +38,15 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (daytime)
+        { 
+            passiveFollowerTimer -= Time.deltaTime;
+            if (passiveFollowerTimer < 0)
+            {
+                passiveFollowerTimer = 10;
+                passiveFollowerCount += passiveFollowerGain;
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -80,7 +93,7 @@ public class Player : MonoBehaviour
                 if (obj.CompareTag("Character"))
                 {
                     //Increase influence
-                    obj.GetComponent<CharacterData>().influence += 10 * value;
+                    obj.GetComponent<CharacterData>().influence += influenceSpeed * value;
                     if (obj.GetComponent<CharacterData>().influence >= 100)
                     {
                         // Character is removed from drone list in day scene on next fixed update call
