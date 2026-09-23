@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -13,6 +13,7 @@ public class CultController : MonoBehaviour
     public Upgrade[] RitualUpgrades; // all the scriptable objects for the ritual results
 
     [Header("UI Elements")]
+    public GameObject InformationPane;
     public GameObject FollowerContainer;
     public GameObject FollowerCardPrefab;
 
@@ -55,9 +56,11 @@ public class CultController : MonoBehaviour
             // parent to the carousel itself
             NewCard.transform.SetParent(FollowerContainer.transform);
 
-            NewCard.transform.localPosition                      = new Vector2(0,0);
             NewCard.transform.localPosition                      = new Vector2(NewCard.GetComponent<RectTransform>().rect.width + (i * 150), 0);
             NewCard.GetComponent<UnityEngine.UI.Image>().color   = CardData.SpriteColour;
+
+            // let the follower card access this manager so it can tell it when a card is being hovered
+            NewCard.GetComponent<DragComponent>().ControllerReference = this;
         }
     }
 
@@ -77,30 +80,52 @@ public class CultController : MonoBehaviour
         SetupFollowerCards(Followers);
     }
 
+    public void UpdateInformationPane(CharacterData FollowerData)
+    {
+        InformationPane.transform.Find("Name").GetComponent<TextMeshProUGUI>().SetText($"{FollowerData.FirstName} {FollowerData.LastName}");
+        InformationPane.transform.Find("Occupation").GetComponent<TextMeshProUGUI>().SetText($"{FollowerData._Occupation}");
+
+        // likes and dislikes
+        if(FollowerData.Likes.Count > 1){InformationPane.transform.Find("Likes").GetComponent<TextMeshProUGUI>().SetText($"Likes: {FollowerData.Likes[0]}, {FollowerData.Likes[1]}");}
+        else{InformationPane.transform.Find("Likes").GetComponent<TextMeshProUGUI>().SetText($"Likes: {FollowerData.Likes[0]}");}
+
+        if(FollowerData.Dislikes.Count > 1){InformationPane.transform.Find("Dislikes").GetComponent<TextMeshProUGUI>().SetText($"Dislikes: {FollowerData.Dislikes[0]}, {FollowerData.Dislikes[1]}");}
+        else{InformationPane.transform.Find("Dislikes").GetComponent<TextMeshProUGUI>().SetText($"Dislikes: {FollowerData.Dislikes[0]}");}
+        
+        if(FollowerData.Virtues.Count > 0){InformationPane.transform.Find("Virtue").GetComponent<TextMeshProUGUI>().SetText($"{FollowerData.Virtues[0].ToString().ToUpper()}");}
+        else{{InformationPane.transform.Find("Virtue").GetComponent<TextMeshProUGUI>().SetText($"");}}
+
+        if(FollowerData.Flaws.Count > 0){InformationPane.transform.Find("Flaw").GetComponent<TextMeshProUGUI>().SetText($"{FollowerData.Flaws[0].ToString().ToUpper()}");}
+        else{{InformationPane.transform.Find("Flaw").GetComponent<TextMeshProUGUI>().SetText($"");}}
+        
+    }
+
 
     // Add member to the ritual functionality
     public void AddFollowerToRitual(GameObject FollowerReference, int SlotID)
     {
         RitualStorage[SlotID] = FollowerReference; // add the follower to the ritual
+        Debug.Log($"Adding {FollowerReference.GetComponent<CharacterData>().FirstName} {FollowerReference.GetComponent<CharacterData>().LastName } to the ritual!");
     }
 
     public void RemoveFollowerFromRitual(int SlotID)
     {
         RitualStorage[SlotID] = null;
+        Debug.Log($"Slot {SlotID} now empty");
     }
 
     // make sure the conditions are satisfied before proceeding with the ritual results
 
-    [ContextMenu("Debug Test Ritual Results")]
     public void TrySubmitRitual()
     {
-        for(int i = 0; i < 5; i++)
+        foreach(GameObject follower in RitualStorage)
         {
-            GameObject MakeFollowerDebug = GetComponent<CharacterGenerator>().GenerateCharacter();
-            RitualStorage[i] = MakeFollowerDebug;
+            if(follower == null)
+            {
+                Debug.Log("All slots are not filled");
+                return;
+            }
         }
-
-        foreach(GameObject follower in RitualStorage){if(follower == null){return;}}
 
         // All the slots are filled
         CompleteRitual();

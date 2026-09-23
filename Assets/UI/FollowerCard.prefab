@@ -109,3 +109,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 141fccd93fc1a594ea06b13f24c3afc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DragComponent
+  InSlot: -1
