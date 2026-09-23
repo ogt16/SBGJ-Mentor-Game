@@ -1,13 +1,25 @@
+using JetBrains.Annotations;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    float walkSpeed = 10;
     Rigidbody2D rb;
-    float dayLength = 120;
-    float influenceRadius;
+
+    //Upgradable Stats + starting values
+    public float influenceRadius;
+    public float droneSpawnRate;
+    public float influenceSpeed;
+    public float dayLength = 120;
+    public float quality;
+    public float passiveFollowerGain = 0;
+    public float startingInfluence = 0;
+    public float walkSpeed = 10;
+    public float skillCheckDifficulty;
+    public float skillCheckPerfectReward;
+    public float skillCheckRecovery;
+    public float skillCheckFrequency;
 
     List<GameObject> collidingWithTrigger;
 
@@ -56,8 +68,9 @@ public class Player : MonoBehaviour
         rb.linearVelocity = value * walkSpeed;
     }
 
-    public void OnAttack()
+    public void OnJump(InputValue input)
     {
+        float value = input.Get<float>();
         List<GameObject> toRemove = new List<GameObject>();
 
         foreach (GameObject obj in collidingWithTrigger)
@@ -66,9 +79,14 @@ public class Player : MonoBehaviour
             {
                 if (obj.CompareTag("Character"))
                 {
-                    // Character is removed from drone list in day scene on next fixed update call
-                    GameData.Instance.AddFollower(obj);
-                    toRemove.Add(obj);
+                    //Increase influence
+                    obj.GetComponent<CharacterData>().influence += 10 * value;
+                    if (obj.GetComponent<CharacterData>().influence >= 100)
+                    {
+                        // Character is removed from drone list in day scene on next fixed update call
+                        GameData.Instance.AddFollower(obj);
+                        toRemove.Add(obj);
+                    }
                 }
             }
         }

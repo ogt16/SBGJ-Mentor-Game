@@ -11,11 +11,18 @@ public class Day : MonoBehaviour
     int droneQuota = 5;
     List<GameObject> drones;
     float DayLimit = 120;
+    Player player;
 
     private void Start()
     {
         drones = new List<GameObject>();
-        //Set DayLimit from Player
+        //Don't create new player if one already exists (for Loading)
+        if (player == null)
+        {
+            player = FindAnyObjectByType<Player>();
+        }
+        //Apply Day Length upgrades
+        DayLimit = player.dayLength;
         while (drones.Count < droneQuota)
         {
             SpawnNewDrone();
@@ -49,6 +56,8 @@ public class Day : MonoBehaviour
     {
         GameObject newDrone = characterGenerator.GenerateCharacter();
         newDrone.transform.Find("InformationPanel").gameObject.SetActive(false);
+        //Apply Starting Influence upgrades to Drones
+        newDrone.GetComponent<CharacterData>().influence = player.startingInfluence;
         newDrone.transform.position = SelectSpawnPosition();
         drones.Add(newDrone);
     }

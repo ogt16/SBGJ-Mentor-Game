@@ -15,6 +15,8 @@ public class CharacterData : MonoBehaviour
     public List<CharacterGenerator.PositiveTrait> Virtues    = new List<CharacterGenerator.PositiveTrait>();
     public List<CharacterGenerator.NegativeTrait> Flaws      = new List<CharacterGenerator.NegativeTrait>();
 
+    public float influence = 0;
+
     public void InitialiseCharacter()
     {
         transform.Find("Square").transform.gameObject.GetComponent<SpriteRenderer>().color = SpriteColour;
