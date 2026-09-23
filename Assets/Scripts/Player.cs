@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public float influenceRadius;
     public float droneSpawnRate;
     public float influenceSpeed;
-    public float dayLength = 120;
+    public float dayLength = 10;
     public float quality;
     public float passiveFollowerGain = 0;
     public float startingInfluence = 0;

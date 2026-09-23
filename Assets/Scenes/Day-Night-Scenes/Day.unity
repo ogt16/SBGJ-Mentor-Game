@@ -1493,6 +1493,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6379381995550558993, guid: 50dc53465739cf640ba0f9fc92112283, type: 3}
   m_PrefabInstance: {fileID: 1360006997919466829}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1568837036 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5139863855903539489, guid: 50dc53465739cf640ba0f9fc92112283, type: 3}
+  m_PrefabInstance: {fileID: 1360006997919466829}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05fde9fdf5ab3f943ae8fdd58f4122b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player
 --- !u!1 &1698818474
 GameObject:
   m_ObjectHideFlags: 0
@@ -1659,6 +1670,8 @@ MonoBehaviour:
   characterGenerator: {fileID: 1756694240}
   spawnPoints:
   - {fileID: 1698818477}
+  DayLimit: 0
+  player: {fileID: 1568837036}
 --- !u!4 &1756694238
 Transform:
   m_ObjectHideFlags: 0
@@ -1708,6 +1721,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5139863855903539489, guid: 50dc53465739cf640ba0f9fc92112283, type: 3}
+      propertyPath: dayLength
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 5273200213035686159, guid: 50dc53465739cf640ba0f9fc92112283, type: 3}
       propertyPath: m_Name
       value: Player

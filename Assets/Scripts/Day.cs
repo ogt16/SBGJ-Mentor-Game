@@ -10,17 +10,12 @@ public class Day : MonoBehaviour
 
     int droneQuota = 5;
     List<GameObject> drones;
-    float DayLimit = 120;
-    Player player;
+    public float DayLimit;
+    [SerializeField] Player player;
 
     private void Start()
     {
         drones = new List<GameObject>();
-        //Don't create new player if one already exists (for Loading)
-        if (player == null)
-        {
-            player = FindAnyObjectByType<Player>();
-        }
         //Apply Day Length upgrades
         DayLimit = player.dayLength;
         while (drones.Count < droneQuota)
@@ -28,6 +23,16 @@ public class Day : MonoBehaviour
             SpawnNewDrone();
         }
     }
+
+    private void Update()
+    {
+        DayLimit -= Time.deltaTime;
+        if (DayLimit < 0)
+        {
+            GoToNight();
+        }
+    }
+
 
     private void FixedUpdate()
     {
