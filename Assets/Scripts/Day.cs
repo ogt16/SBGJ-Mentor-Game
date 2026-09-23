@@ -47,6 +47,7 @@ public class Day : MonoBehaviour
     void SpawnNewDrone()
     {
         GameObject newDrone = characterGenerator.GenerateCharacter();
+        newDrone.transform.Find("InformationPanel").gameObject.SetActive(false);
         newDrone.transform.position = SelectSpawnPosition();
         drones.Add(newDrone);
     }

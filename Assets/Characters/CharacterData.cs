@@ -37,6 +37,7 @@ public class CharacterData : MonoBehaviour
 
         if(Flaws.Count > 0){InformationPanel.transform.Find("Flaw").gameObject.GetComponent<TextMeshProUGUI>().SetText($"{Flaws[0]}");}
         else{InformationPanel.transform.Find("Flaw").gameObject.GetComponent<TextMeshProUGUI>().SetText("");}
+
     }
 
 

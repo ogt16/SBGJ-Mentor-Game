@@ -27,6 +27,10 @@ public class Player : MonoBehaviour
         if (!collidingWithTrigger.Contains(collision.gameObject))
         {
             collidingWithTrigger.Add(collision.gameObject);
+            if (collision.gameObject.CompareTag("Character"))
+            {
+                collision.gameObject.transform.Find("InformationPanel").gameObject.SetActive(true);
+            }
         }
     }
 
@@ -34,6 +38,10 @@ public class Player : MonoBehaviour
     {
         if (collidingWithTrigger.Contains(collision.gameObject))
         {
+            if (collision.gameObject.CompareTag("Character"))
+            {
+                collision.gameObject.transform.Find("InformationPanel").gameObject.SetActive(false);
+            }
             collidingWithTrigger.Remove(collision.gameObject);
         }
     }
