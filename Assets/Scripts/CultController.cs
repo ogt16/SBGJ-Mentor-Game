@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class CultController : MonoBehaviour
 {
@@ -9,7 +11,71 @@ public class CultController : MonoBehaviour
     // essentially the backend of the night loop. will need hooking into the UI created
 
     public Upgrade[] RitualUpgrades; // all the scriptable objects for the ritual results
+
+    [Header("UI Elements")]
+    public GameObject FollowerContainer;
+    public GameObject FollowerCardPrefab;
+
+    // Private fields
     private GameObject[] RitualStorage = new GameObject[5];
+
+    public void ClearPreviousCarousel(int Quantity)
+    {
+        // Clear the previous carousel data and cards
+        int PreviousFollowerCarousel = FollowerContainer.transform.childCount;
+        for(int i = 0; i < PreviousFollowerCarousel; i++)
+        {
+            Destroy(FollowerContainer.transform.GetChild(i).transform.gameObject);
+        }
+    }
+
+    public void SetupFollowerCards(List<CharacterData> FollowerData)
+    {
+        // apply the saved follower data to the cards
+        ClearPreviousCarousel(FollowerData.Count);
+
+        for(int i = 0; i < FollowerData.Count; i++)
+        {
+            // Create the card itself
+            // Apply the correct data to the card
+
+            GameObject NewCard       = Instantiate(FollowerCardPrefab);
+            CharacterData CardData   = NewCard.GetComponent<CharacterData>();
+
+            // In hindsight i imagine there is a much better way to map these values
+            CardData.FirstName       = FollowerData[i].FirstName;
+            CardData.LastName        = FollowerData[i].LastName;
+            CardData._Occupation     = FollowerData[i]._Occupation;
+            CardData.Likes           = FollowerData[i].Likes;
+            CardData.Dislikes        = FollowerData[i].Dislikes;
+            CardData.Virtues         = FollowerData[i].Virtues;
+            CardData.Flaws           = FollowerData[i].Flaws;
+            CardData.SpriteColour    = FollowerData[i].SpriteColour;
+
+            // parent to the carousel itself
+            NewCard.transform.SetParent(FollowerContainer.transform);
+
+            NewCard.transform.localPosition                      = new Vector2(0,0);
+            NewCard.transform.localPosition                      = new Vector2(NewCard.GetComponent<RectTransform>().rect.width + (i * 150), 0);
+            NewCard.GetComponent<UnityEngine.UI.Image>().color   = CardData.SpriteColour;
+        }
+    }
+
+    [ContextMenu("Debug Create Follower Carousel")]
+    public void DebugRitual()
+    {
+        // create dummy followers and add them to the carousel to be used in the ritual
+        int Quantity = Random.Range(5,8);
+        List<CharacterData> Followers = new List<CharacterData>();
+
+        for(int i = 0; i < Quantity; i++)
+        {
+            GameObject NewFollower = GetComponent<CharacterGenerator>().GenerateCharacter();
+            Followers.Add(NewFollower.GetComponent<CharacterData>());
+        }
+
+        SetupFollowerCards(Followers);
+    }
 
 
     // Add member to the ritual functionality
@@ -207,19 +273,32 @@ public class CultController : MonoBehaviour
             }
 
             // if all conditions are satisfied then reward the upgrade!
-            if(validator)
-            {
-                Debug.Log($"Conditions satisfied for {RitualUpgrade}!");
-                UpgradesRewarded.Add(RitualUpgrade);
-            }
+            if(validator){UpgradesRewarded.Add(RitualUpgrade);}
         }
 
+        // realistically the player will get 0-2 upgrades, i cant imagine there being a combination of characters that unlocks more than 2 upgrades
         if(UpgradesRewarded.Count > 0)
         {
             foreach(Upgrade _upgrade in UpgradesRewarded)
             {
                 Debug.Log($"Rewarding player with {_upgrade.DisplayName}");
+
+                // this is the block of code to actually deal with unlocking the upgrades
+                /* 
+                    If upgrade is NOT unlocked yet:
+                        Add the details to the ritual book that shows the recipe
+
+                    if the upgrade IS unlocked already:
+                        Does it stack effect?
+                         Does it upgrade to the next tier?
+                          Does it unlock the recipe for the next tier?
+                */
             }
+        }
+        else
+        {
+            //the player has sacrificed 5 followers for no reason!
+            // i think a sad trumpet should play here honestly
         }
 
     }
