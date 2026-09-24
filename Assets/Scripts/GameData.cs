@@ -39,7 +39,7 @@ public class GameData : MonoBehaviour
         followers = new List<CharacterData>();
     }
     
-    public void AddFollower(GameObject follower)
+    public void AddFollower(CharacterData follower)
     {
 
         if (!followers.Contains(follower))
@@ -49,7 +49,7 @@ public class GameData : MonoBehaviour
 
     }
 
-    public void RemoveFollower(GameObject follower)
+    public void RemoveFollower(CharacterData follower)
     {
         if (followers.Contains(follower))
         {
@@ -86,7 +86,7 @@ public class GameData : MonoBehaviour
                 quality += upgrade.upgradeStatDifference;
                 break;
             case UpgradeStatToChange.PASSIVE_FOLLOWER_GAIN:
-                passiveFollowerFrequency += upgrade.upgradeStatDifference;
+                passiveFollowerGain += upgrade.upgradeStatDifference;
                 break;
             case UpgradeStatToChange.STARTING_INFLUENCE:
                 startingInfluence += upgrade.upgradeStatDifference;

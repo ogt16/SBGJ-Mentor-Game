@@ -7,8 +7,11 @@ using UnityEngine.UI;
 public class DragComponent : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public int InSlot = -1;
+    public Vector2 PosCache = new Vector2(0,0);
     private bool InDrag = false;
     public CultController ControllerReference;
+    public Vector2 CarouselPosition;
+
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -27,7 +30,30 @@ public class DragComponent : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         InDrag = false;
 
         // if the card is not in a slot then return it to the carousel. --> if it WAS in a slot remove the slot data from the ritual
+        // check if the card overlaps with the slot
+        if(PosCache != null)
+        {
+            BoxCollider2D _collider = this.transform.gameObject.GetComponent<BoxCollider2D>();
+            if(!_collider.OverlapPoint(PosCache))
+            {
+                if(InSlot != -1){ControllerReference.RemoveFollowerFromRitual(InSlot);}
+                InSlot = - 1;
+                PosCache = new Vector2(0,0);
 
+                // NOT IN A SLOT
+                transform.localPosition = CarouselPosition;            
+                ControllerReference.UpdateInformationPane();
+
+
+            }
+        }
+        else
+        {
+            // NOT IN A SLOT
+            transform.localPosition = CarouselPosition;
+            ControllerReference.UpdateInformationPane();
+
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)

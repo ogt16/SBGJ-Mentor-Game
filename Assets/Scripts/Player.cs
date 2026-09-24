@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
         cl = GetComponent<CircleCollider2D>();
 
         cl.radius = GameData.Instance.influenceRadius;
+        transform.Find("InfluenceRadiusVisual").gameObject.transform.localScale = Vector3.one * 2 * cl.radius;
     }
 
     // Update is called once per frame
@@ -72,6 +74,7 @@ public class Player : MonoBehaviour
                 {
                     //Increase influence
                     obj.GetComponent<Character>().influence += GameData.Instance.influenceSpeed;
+                    obj.GetComponent<Character>().transform.Find("InformationPanel").gameObject.transform.Find("Canvas").gameObject.transform.Find("InfluenceMeter").gameObject.GetComponent<Slider>().value = obj.GetComponent<Character>().influence;
                     if (obj.GetComponent<Character>().influence >= 100)
                     {
                         // Character is removed from drone list in day scene on next fixed update call
