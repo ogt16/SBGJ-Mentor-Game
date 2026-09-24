@@ -1,12 +1,14 @@
 
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
     [SerializeField] Image unpressedImage;
+    [SerializeField] Image hoverImage;
     [SerializeField] Image pressedImage;
     SceneAsset DayScene;
 
@@ -22,12 +24,26 @@ public class Menu : MonoBehaviour
     {
         unpressedImage.transform.localScale = new Vector3(defaultScale + (Mathf.Sin(Time.time) * 0.025f), defaultScale + (Mathf.Sin(Time.time) * 0.025f), 1);
         pressedImage.transform.localScale = new Vector3(defaultScale + (Mathf.Sin(Time.time) * 0.025f), defaultScale + (Mathf.Sin(Time.time) * 0.025f), 1);
+        hoverImage.transform.localScale = new Vector3(defaultScale + (Mathf.Sin(Time.time) * 0.025f), defaultScale + (Mathf.Sin(Time.time) * 0.025f), 1);
     }
 
     public void PlayButtonPressed()
     {
         unpressedImage.gameObject.SetActive(false);
+        hoverImage.gameObject.SetActive(false);
         pressedImage.gameObject.SetActive(true);
         SceneManager.LoadScene("Day");
+    }
+
+    public void PlayButtonHover()
+    {
+        unpressedImage.gameObject.SetActive(false);
+        hoverImage.gameObject.SetActive(true);
+    }
+
+    public void PlayButtonEndHover()
+    {
+        hoverImage.gameObject.SetActive(false);
+        unpressedImage.gameObject.SetActive(true);
     }
 }
