@@ -52,23 +52,23 @@ public class CultController : MonoBehaviour
             // Apply the correct data to the card
 
             GameObject NewCard       = Instantiate(FollowerCardPrefab);
-            CharacterData CardData   = NewCard.GetComponent<CharacterData>();
+            NewCard.GetComponent<Character>().data = FollowerData[i];
 
             // In hindsight i imagine there is a much better way to map these values
-            CardData.FirstName       = FollowerData[i].FirstName;
-            CardData.LastName        = FollowerData[i].LastName;
-            CardData._Occupation     = FollowerData[i]._Occupation;
-            CardData.Likes           = FollowerData[i].Likes;
-            CardData.Dislikes        = FollowerData[i].Dislikes;
-            CardData.Virtues         = FollowerData[i].Virtues;
-            CardData.Flaws           = FollowerData[i].Flaws;
-            CardData.SpriteColour    = FollowerData[i].SpriteColour;
+            //CardData.FirstName       = FollowerData[i].FirstName;
+            //CardData.LastName        = FollowerData[i].LastName;
+            //CardData._Occupation     = FollowerData[i]._Occupation;
+            //CardData.Likes           = FollowerData[i].Likes;
+            //CardData.Dislikes        = FollowerData[i].Dislikes;
+            //CardData.Virtues         = FollowerData[i].Virtues;
+            //CardData.Flaws           = FollowerData[i].Flaws;
+            //CardData.SpriteColour    = FollowerData[i].SpriteColour;
 
             // parent to the carousel itself
             NewCard.transform.SetParent(FollowerContainer.transform);
 
             NewCard.transform.localPosition                      = new Vector2(NewCard.GetComponent<RectTransform>().rect.width + (i * 150) - 830, 0);
-            NewCard.GetComponent<UnityEngine.UI.Image>().color   = CardData.SpriteColour;
+            NewCard.GetComponent<UnityEngine.UI.Image>().color   = FollowerData[i].SpriteColour;
 
             // let the follower card access this manager so it can tell it when a card is being hovered
             NewCard.GetComponent<DragComponent>().ControllerReference = this;
@@ -85,15 +85,23 @@ public class CultController : MonoBehaviour
         for(int i = 0; i < Quantity; i++)
         {
             GameObject NewFollower = GetComponent<CharacterGenerator>().GenerateCharacter();
-            Followers.Add(NewFollower.GetComponent<CharacterData>());
+            Followers.Add(NewFollower.GetComponent<Character>().data);
         }
 
         SetupFollowerCards(Followers);
     }
 
-    public void UpdateInformationPane([Optional] CharacterData FollowerData)
+    // this spawns all the followers in night time
+    private void CreateNightCarousel()
     {
-        if(FollowerData)
+        // get the game data
+        SetupFollowerCards(GameData.Instance.followers);
+    }
+
+    public void UpdateInformationPane(CharacterData FollowerData = new CharacterData())
+    {
+        CharacterData _new = new CharacterData();
+        if(FollowerData != _new)
         {
             InformationPane.transform.Find("Name").GetComponent<TextMeshProUGUI>().SetText($"{FollowerData.FirstName} {FollowerData.LastName}");
             InformationPane.transform.Find("Occupation").GetComponent<TextMeshProUGUI>().SetText($"{FollowerData._Occupation}");
@@ -243,7 +251,7 @@ public class CultController : MonoBehaviour
     public void AddFollowerToRitual(GameObject FollowerReference, int SlotID)
     {
         RitualStorage[SlotID] = FollowerReference; // add the follower to the ritual
-        Debug.Log($"Adding {FollowerReference.GetComponent<CharacterData>().FirstName} {FollowerReference.GetComponent<CharacterData>().LastName } to the ritual!");
+        Debug.Log($"Adding {FollowerReference.GetComponent<Character>().data.FirstName} {FollowerReference.GetComponent<Character>().data.LastName } to the ritual!");
     }
 
     public void RemoveFollowerFromRitual(int SlotID)
@@ -349,7 +357,7 @@ public class CultController : MonoBehaviour
 
         foreach(GameObject Follower in RitualStorage)
         {
-            CharacterData FollowerData = Follower.GetComponent<CharacterData>();
+            CharacterData FollowerData = Follower.GetComponent<Character>().data;
 
             OccupationRequirementsFulfilled.Add(FollowerData._Occupation);
 
@@ -472,6 +480,21 @@ public class CultController : MonoBehaviour
             // i think a sad trumpet should play here honestly
         }
 
+        // KILL ALL THE FOLLOWERS IN RITUAL STORAGE
+        // 1. delete the cards
+        // 2. remove them from the game data singleton
+
+        foreach(GameObject Follower in RitualStorage)
+        {
+            if(GameData.Instance.followers.Contains(Follower.GetComponent<Character>().data))
+            {
+                GameData.Instance.followers.Remove(Follower.GetComponent<Character>().data);
+            }
+            
+            Destroy(Follower);
+        }
+
+        RitualStorage = new GameObject[5];
     }
 
 }

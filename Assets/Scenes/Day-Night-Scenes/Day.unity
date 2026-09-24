@@ -1727,7 +1727,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41a03d22bd562191e844c8ba74fa7b59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameData
-  followers: []
   upgrades: []
   influenceRadius: 2
   droneSpawnRate: 15
@@ -1735,7 +1734,7 @@ MonoBehaviour:
   dayLength: 120
   quality: 0
   passiveFollowerGain: 0
-  passiveFollowerFrequency: 0
+  passiveFollowerFrequency: 60
   startingInfluence: 0
   walkSpeed: 10
   skillCheckDifficulty: 0

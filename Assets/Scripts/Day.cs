@@ -14,9 +14,9 @@ public class Day : MonoBehaviour
     
     [SerializeField] Player player;
 
-    float passiveFollowerCount = 0;
-    float passiveFollowerTimer = GameData.Instance.passiveFollowerFrequency;
-    float droneSpawnTimer = GameData.Instance.droneSpawnRate;
+    float passiveFollowerCount;
+    float passiveFollowerTimer;
+    float droneSpawnTimer;
     float dayLimit;
 
     private void Start()
@@ -28,6 +28,9 @@ public class Day : MonoBehaviour
         {
             SpawnNewDrone();
         }
+        passiveFollowerCount = 0;
+        passiveFollowerTimer = GameData.Instance.passiveFollowerFrequency;
+        droneSpawnTimer = GameData.Instance.droneSpawnRate;
     }
 
     private void Update()
@@ -82,7 +85,7 @@ public class Day : MonoBehaviour
         GameObject newDrone = characterGenerator.GenerateCharacter();
         newDrone.transform.Find("InformationPanel").gameObject.SetActive(false);
         //Apply Starting Influence upgrades to Drones
-        newDrone.GetComponent<CharacterData>().influence = GameData.Instance.startingInfluence;
+        newDrone.GetComponent<Character>().influence = GameData.Instance.startingInfluence;
         newDrone.transform.position = SelectSpawnPosition();
         drones.Add(newDrone);
     }
@@ -90,8 +93,10 @@ public class Day : MonoBehaviour
     void SpawnNewPassiveFollower()
     {
         GameObject newFollower = characterGenerator.GenerateCharacter();
-        newFollower.GetComponent<CharacterData>().influence = GameData.Instance.startingInfluence;
-        GameData.Instance.AddFollower(newFollower);
+
+        GameData.Instance.AddFollower(newFollower.GetComponent<Character>().data);
+        newFollower.GetComponent<Character>().influence = GameData.Instance.startingInfluence;
+
         newFollower.gameObject.SetActive(false);
 
     }
