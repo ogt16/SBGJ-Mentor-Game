@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using TMPro;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
@@ -493,6 +494,17 @@ public class CultController : MonoBehaviour
         // 1. delete the cards
         // 2. remove them from the game data singleton
 
+        foreach(GameObject Follower in RitualStorage)
+        {
+            if(GameData.Instance.followers.Contains(Follower.GetComponent<CharacterData>()))
+            {
+                GameData.Instance.followers.Remove(Follower.GetComponent<CharacterData>());
+            }
+            
+            Destroy(Follower);
+        }
+
+        RitualStorage = new GameObject[5];
     }
 
 }
