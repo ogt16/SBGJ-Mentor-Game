@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
         cl = GetComponent<CircleCollider2D>();
 
         cl.radius = GameData.Instance.influenceRadius;
+        transform.Find("InfluenceRadiusVisual").gameObject.transform.localScale = Vector3.one * 2 * cl.radius;
     }
 
     // Update is called once per frame
