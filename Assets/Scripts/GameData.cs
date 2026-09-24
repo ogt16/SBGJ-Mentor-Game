@@ -10,7 +10,7 @@ public class GameData : MonoBehaviour
     //Upgradable Stats + starting values
     public float influenceRadius = 2;
     public float droneSpawnRate = 15;
-    public float influenceSpeed = 20;
+    public float influenceSpeed = 1;
     public float dayLength = 120;
     public float quality;
     public float passiveFollowerGain = 0;

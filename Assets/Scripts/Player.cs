@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.Windows;
 
 public class Player : MonoBehaviour
 {
     Rigidbody2D rb;
     CircleCollider2D cl;
     List<GameObject> collidingWithTrigger;
-
-
+    bool influencing;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
 
         cl.radius = GameData.Instance.influenceRadius;
         transform.Find("InfluenceRadiusVisual").gameObject.transform.localScale = Vector3.one * 2 * cl.radius;
+        bool influencing = false;
     }
 
     // Update is called once per frame
@@ -64,31 +65,73 @@ public class Player : MonoBehaviour
 
     public void OnJump(InputValue input)
     {
-        List<GameObject> toRemove = new List<GameObject>();
-
-        foreach (GameObject obj in collidingWithTrigger)
+        //List<GameObject> toRemove = new List<GameObject>();
+        if (input.Get<float>() == 1.0f)
         {
-            if (obj != null)
+            influencing = true;
+        }
+        else
+        {
+            influencing = false;
+        }
+        //foreach (GameObject obj in collidingWithTrigger)
+        //{
+        //    if (obj != null)
+        //    {
+        //        if (obj.CompareTag("Character"))
+        //        {
+        //            //Increase influence
+        //            obj.GetComponent<CharacterData>().influence += GameData.Instance.influenceSpeed * input.Get<int>();
+        //            obj.GetComponent<CharacterData>().transform.Find("InformationPanel").gameObject.transform.Find("Canvas").gameObject.transform.Find("InfluenceMeter").gameObject.GetComponent<Slider>().value = obj.GetComponent<CharacterData>().influence;
+        //            if (obj.GetComponent<CharacterData>().influence >= 100)
+        //            {
+        //                // Character is removed from drone list in day scene on next fixed update call
+        //                GameData.Instance.AddFollower(obj.GetComponent<CharacterData>());
+        //                toRemove.Add(obj);
+        //            }
+        //        }
+        //    }
+        //}
+
+        //foreach (GameObject obj in toRemove)
+        //{
+        //    collidingWithTrigger.Remove(obj);
+        //    obj.SetActive(false);
+        //}
+    }
+
+    //Influence while Space is held
+    public void FixedUpdate()
+    {
+        List<GameObject> toRemove = new List<GameObject>();
+        if (influencing)
+        {
             {
-                if (obj.CompareTag("Character"))
+                foreach (GameObject obj in collidingWithTrigger)
                 {
-                    //Increase influence
-                    obj.GetComponent<CharacterData>().influence += GameData.Instance.influenceSpeed;
-                    obj.GetComponent<CharacterData>().transform.Find("InformationPanel").gameObject.transform.Find("Canvas").gameObject.transform.Find("InfluenceMeter").gameObject.GetComponent<Slider>().value = obj.GetComponent<CharacterData>().influence;
-                    if (obj.GetComponent<CharacterData>().influence >= 100)
+                    if (obj != null)
                     {
-                        // Character is removed from drone list in day scene on next fixed update call
-                        GameData.Instance.AddFollower(obj.GetComponent<CharacterData>());
-                        toRemove.Add(obj);
+                        if (obj.CompareTag("Character"))
+                        {
+                            //Increase influence
+                            obj.GetComponent<CharacterData>().influence += GameData.Instance.influenceSpeed;
+                            obj.GetComponent<CharacterData>().transform.Find("InformationPanel").gameObject.transform.Find("Canvas").gameObject.transform.Find("InfluenceMeter").gameObject.GetComponent<Slider>().value = obj.GetComponent<CharacterData>().influence;
+                            if (obj.GetComponent<CharacterData>().influence >= 100)
+                            {
+                                // Character is removed from drone list in day scene on next fixed update call
+                                GameData.Instance.AddFollower(obj.GetComponent<CharacterData>());
+                                toRemove.Add(obj);
+                            }
+                        }
                     }
                 }
-            }
-        }
 
-        foreach (GameObject obj in toRemove)
-        {
-            collidingWithTrigger.Remove(obj);
-            obj.SetActive(false);
+                foreach (GameObject obj in toRemove)
+                {
+                    collidingWithTrigger.Remove(obj);
+                    obj.SetActive(false);
+                }
+            }
         }
     }
 }
