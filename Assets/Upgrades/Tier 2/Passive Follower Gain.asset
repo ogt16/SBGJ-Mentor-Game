@@ -15,6 +15,8 @@ MonoBehaviour:
   DisplayName: Internet Outreach +
   Icon: {fileID: 0}
   RewardText: Gain followers from sitting around doing nothing!
+  upgradeStatToChange: 5
+  upgradeStatDifference: 2
   OccupationRequirements: 0c0000000c000000
   VirtueRequirements: 
   FlawRequirements: 

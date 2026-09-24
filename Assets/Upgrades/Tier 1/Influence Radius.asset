@@ -15,6 +15,8 @@ MonoBehaviour:
   DisplayName: Naturally loud voice
   Icon: {fileID: 0}
   RewardText: Influence drones from further away
+  upgradeStatToChange: 0
+  upgradeStatDifference: 1
   OccupationRequirements: 
   VirtueRequirements: 0600000006000000
   FlawRequirements: 

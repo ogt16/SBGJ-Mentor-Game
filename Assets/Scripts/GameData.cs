@@ -13,7 +13,7 @@ public class GameData : MonoBehaviour
     public float dayLength;
     public float quality;
     public float passiveFollowerGain;
-    public float passiveFollowerFrequency;
+    public float passiveFollowerFrequency; // No upgrade for this
     public float startingInfluence;
     public float walkSpeed;
     public float skillCheckDifficulty;

@@ -15,6 +15,8 @@ MonoBehaviour:
   DisplayName: Track and field career
   Icon: {fileID: 0}
   RewardText: Run around faster
+  upgradeStatToChange: 7
+  upgradeStatDifference: 1
   OccupationRequirements: 0700000007000000
   VirtueRequirements: 
   FlawRequirements: 

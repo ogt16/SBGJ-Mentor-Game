@@ -15,6 +15,8 @@ MonoBehaviour:
   DisplayName: Better than Perfect
   Icon: {fileID: 0}
   RewardText: Hitting skill checks build more influence
+  upgradeStatToChange: 9
+  upgradeStatDifference: 1
   OccupationRequirements: 04000000
   VirtueRequirements: 
   FlawRequirements: 
