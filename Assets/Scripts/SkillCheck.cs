@@ -26,7 +26,9 @@ public class SkillCheck : MonoBehaviour
         transform.localPosition = Vector3.zero;
         attacking = false;
         inTarget = false;
-        targetMiddleX = Random.Range(-20, 70);
+
+
+        //targetMiddleX = Random.Range(targetWidth, GetComponent<RectTransform>().);
 
         transform.Find("Target").gameObject.transform.localScale = new Vector3(targetWidth, 1, 0);
         transform.Find("Target").gameObject.transform.localPosition =new Vector3(targetMiddleX, 0 ,0);
@@ -72,6 +74,10 @@ public class SkillCheck : MonoBehaviour
 
     public bool SetAttack()
     {
+
+        if (GetComponent<Slider>.value)
+        {
+        }
         //Put inTarget testing in here
         
         attacking = true;
