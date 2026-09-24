@@ -31,7 +31,14 @@ public class CultController : MonoBehaviour
     // Private fields
     private GameObject[] RitualStorage = new GameObject[5];
 
-    public void ClearPreviousCarousel(int Quantity)
+    // LOAD NIGHT
+    public void Start()
+    {
+        // reset all the ui elements
+        CreateNightCarousel(); // creates the followers at the bottom
+    }
+
+    private void ClearPreviousCarousel(int Quantity)
     {
         // Clear the previous carousel data and cards
         int PreviousFollowerCarousel = FollowerContainer.transform.childCount;
@@ -75,20 +82,29 @@ public class CultController : MonoBehaviour
         }
     }
 
-    [ContextMenu("Debug Create Follower Carousel")]
-    public void DebugRitual()
+    // [ContextMenu("Debug Create Follower Carousel")]
+    // public void DebugRitual()
+    // {
+    //     // create dummy followers and add them to the carousel to be used in the ritual
+    //     int Quantity = Random.Range(5,8);
+    //     List<CharacterData> Followers = new List<CharacterData>();
+
+    //     for(int i = 0; i < Quantity; i++)
+    //     {
+    //         GameObject NewFollower = GetComponent<CharacterGenerator>().GenerateCharacter();
+    //         Followers.Add(NewFollower.GetComponent<CharacterData>());
+    //     }
+
+    //     SetupFollowerCards(Followers);
+    // }
+
+    // this spawns all the followers in night time
+    private void CreateNightCarousel()
     {
-        // create dummy followers and add them to the carousel to be used in the ritual
-        int Quantity = Random.Range(5,8);
-        List<CharacterData> Followers = new List<CharacterData>();
+        // get the game data
+        GameData _data = this.transform.gameObject.GetComponent<GameData>();
+        SetupFollowerCards(_data.followers);
 
-        for(int i = 0; i < Quantity; i++)
-        {
-            GameObject NewFollower = GetComponent<CharacterGenerator>().GenerateCharacter();
-            Followers.Add(NewFollower.GetComponent<CharacterData>());
-        }
-
-        SetupFollowerCards(Followers);
     }
 
     public void UpdateInformationPane([Optional] CharacterData FollowerData)

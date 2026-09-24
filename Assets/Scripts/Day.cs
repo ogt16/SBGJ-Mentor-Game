@@ -79,7 +79,7 @@ public class Day : MonoBehaviour
     {
         GameObject newFollower = characterGenerator.GenerateCharacter();
         newFollower.GetComponent<CharacterData>().influence = 100;
-        GameData.Instance.AddFollower(newFollower);
+        GameData.Instance.AddFollower(newFollower.GetComponent<CharacterData>());
         newFollower.gameObject.SetActive(false);
 
     }
