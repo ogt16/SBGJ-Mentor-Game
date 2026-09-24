@@ -16,7 +16,7 @@ MonoBehaviour:
   Icon: {fileID: 0}
   RewardText: More hours in the day to influence people
   upgradeStatToChange: 3
-  upgradeStatDifference: 3
+  upgradeStatDifference: 60
   OccupationRequirements: 0800000008000000
   VirtueRequirements: 0a0000000a000000
   FlawRequirements: 0100000001000000

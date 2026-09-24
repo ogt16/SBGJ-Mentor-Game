@@ -11,17 +11,19 @@ public class Day : MonoBehaviour
 
     int droneQuota = 5;
     List<GameObject> drones;
-    public float DayLimit;
+    
     [SerializeField] Player player;
 
-    public float passiveFollowerCount;
-    public float passiveFollowerTimer = GameData.Instance.passiveFollowerFrequency;
+    float passiveFollowerCount = 0;
+    float passiveFollowerTimer = GameData.Instance.passiveFollowerFrequency;
+    float droneSpawnTimer = GameData.Instance.droneSpawnRate;
+    float dayLimit;
 
     private void Start()
     {
         drones = new List<GameObject>();
         //Apply Day Length upgrades
-        DayLimit = GameData.Instance.dayLength;
+        dayLimit = GameData.Instance.dayLength;
         while (drones.Count < droneQuota)
         {
             SpawnNewDrone();
@@ -37,8 +39,14 @@ public class Day : MonoBehaviour
             passiveFollowerCount += GameData.Instance.passiveFollowerGain;
         }
 
-        DayLimit -= Time.deltaTime;
-        if (DayLimit < 0)
+        droneSpawnTimer -= Time.deltaTime;
+        if (droneSpawnTimer < 0 && drones.Count < droneQuota)
+        {
+            SpawnNewDrone();
+            droneSpawnTimer = GameData.Instance.droneSpawnRate;
+        }
+        dayLimit -= Time.deltaTime;
+        if (dayLimit < 0)
         {
             GoToNight();
         }
@@ -62,11 +70,6 @@ public class Day : MonoBehaviour
             drones.Remove(drone);
         }
 
-        while (drones.Count < droneQuota)
-        {
-            SpawnNewDrone();
-        }
-
         while (passiveFollowerCount>=1)
         {
             passiveFollowerCount--;
@@ -87,7 +90,7 @@ public class Day : MonoBehaviour
     void SpawnNewPassiveFollower()
     {
         GameObject newFollower = characterGenerator.GenerateCharacter();
-        newFollower.GetComponent<CharacterData>().influence = 100;
+        newFollower.GetComponent<CharacterData>().influence = GameData.Instance.startingInfluence;
         GameData.Instance.AddFollower(newFollower);
         newFollower.gameObject.SetActive(false);
 

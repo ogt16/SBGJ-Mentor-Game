@@ -15,7 +15,7 @@ public class CharacterData : MonoBehaviour
     public List<CharacterGenerator.PositiveTrait> Virtues    = new List<CharacterGenerator.PositiveTrait>();
     public List<CharacterGenerator.NegativeTrait> Flaws      = new List<CharacterGenerator.NegativeTrait>();
 
-    public float influence = 0;
+    public float influence;
 
     public void InitialiseCharacter()
     {

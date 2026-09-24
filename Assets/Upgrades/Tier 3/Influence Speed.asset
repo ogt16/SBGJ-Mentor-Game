@@ -16,7 +16,7 @@ MonoBehaviour:
   Icon: {fileID: 0}
   RewardText: Influence drones quicker
   upgradeStatToChange: 11
-  upgradeStatDifference: 3
+  upgradeStatDifference: 10
   OccupationRequirements: 010000000100000001000000
   VirtueRequirements: 000000000500000005000000
   FlawRequirements: 0500000005000000

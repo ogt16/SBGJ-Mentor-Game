@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     Rigidbody2D rb;
-
+    CircleCollider2D cl;
     List<GameObject> collidingWithTrigger;
 
 
@@ -17,6 +17,9 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         collidingWithTrigger = new List<GameObject>();
+        cl = GetComponent<CircleCollider2D>();
+
+        cl.radius = GameData.Instance.influenceRadius;
     }
 
     // Update is called once per frame
@@ -59,7 +62,6 @@ public class Player : MonoBehaviour
 
     public void OnJump(InputValue input)
     {
-        float value = input.Get<float>();
         List<GameObject> toRemove = new List<GameObject>();
 
         foreach (GameObject obj in collidingWithTrigger)
@@ -69,7 +71,7 @@ public class Player : MonoBehaviour
                 if (obj.CompareTag("Character"))
                 {
                     //Increase influence
-                    obj.GetComponent<CharacterData>().influence += GameData.Instance.influenceSpeed * value;
+                    obj.GetComponent<CharacterData>().influence += GameData.Instance.influenceSpeed;
                     if (obj.GetComponent<CharacterData>().influence >= 100)
                     {
                         // Character is removed from drone list in day scene on next fixed update call

@@ -451,6 +451,9 @@ public class CultController : MonoBehaviour
             {
                 Debug.Log($"Rewarding player with {_upgrade.DisplayName}");
 
+                // Returns false if the upgrade is already unlocked
+                bool success = GameData.Instance.TryUpgrade(_upgrade);
+
                 // this is the block of code to actually deal with unlocking the upgrades
                 /* 
                     If upgrade is NOT unlocked yet:
