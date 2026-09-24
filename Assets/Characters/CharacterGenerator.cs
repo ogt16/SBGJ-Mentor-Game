@@ -128,12 +128,27 @@ public class CharacterGenerator : MonoBehaviour
         }
 
         //Setting randomised colour
-        NewCharacterData.data.SpriteColour = new Color32((byte)Random.Range(1,256), (byte)Random.Range(1,256), (byte)Random.Range(1,256), 255);
+        NewCharacterData.data.hairColour = RandomColour();
+        NewCharacterData.data.shirtColour = RandomColour();
+        NewCharacterData.data.shoeColour = RandomColour();
+        NewCharacterData.data.skinColour = SkinColour();
+        NewCharacterData.data.hairStyle = Random.Range(0, 16);
 
         // setup the information panel and all that
         NewCharacterData.InitialiseCharacter();
 
         Debug.Log($"Creating new character: {NewCharacterData.data.FirstName} {NewCharacterData.data.LastName}");
         return NewCharacter;
+    }
+
+    Color RandomColour()
+    {
+        return new Color(Random.Range(0, 256) / 255f, Random.Range(0, 256) / 255f, Random.Range(0, 256) / 255f, 1);
+    }
+
+    // May have slight skew towards generating white skin tones blame AI
+    Color SkinColour()
+    {
+        return new Color(Random.Range(180f, 231f) / 255f, Random.Range(200f, 256f) / 255f, Random.Range(50f, 100f) / 255f, 1);
     }
 }
