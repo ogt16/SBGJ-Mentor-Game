@@ -36,22 +36,12 @@ public class SkillCheck : MonoBehaviour
     private void FixedUpdate()
     {
         GetComponent<Slider>().value++;
-        if (attacking)
-        {
-            if (inTarget)
-            {
-                player.SkillCheckHit(this.gameObject);
-            }
-            else
-            {
-                player.SkillCheckMiss(this.gameObject);
-            }
-        }
         if (GetComponent<Slider>().value >= GetComponent<Slider>().maxValue)
         {
             player.SkillCheckMiss(this.gameObject);
+            //gameObject.SetActive(false);
         }
-        attacking = false;
+        //attacking = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -62,5 +52,20 @@ public class SkillCheck : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         inTarget = false;
+    }
+
+    public void SetAttack()
+    {
+        Debug.Log("Attack sent!");
+        if (inTarget)
+        {
+            Debug.Log("Hit");
+            player.SkillCheckHit(this.gameObject);
+        }
+        else
+        {
+            Debug.Log("Miss");
+            player.SkillCheckMiss(this.gameObject);
+        }
     }
 }

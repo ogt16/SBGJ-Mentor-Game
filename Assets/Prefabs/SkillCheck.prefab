@@ -496,7 +496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillCheck
   player: {fileID: 0}
-  attacking: 0
+  attacking: 1
 --- !u!1 &9089565288238379537
 GameObject:
   m_ObjectHideFlags: 0

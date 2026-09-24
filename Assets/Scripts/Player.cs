@@ -13,7 +13,8 @@ public class Player : MonoBehaviour
     List<GameObject> collidingWithTrigger;
     bool influencing;
     public GameObject skillCheck;
-    bool skillCheckActive;
+    bool isSkillCheckActive;
+    public GameObject activeSkillCheck;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,7 +26,7 @@ public class Player : MonoBehaviour
         cl.radius = GameData.Instance.influenceRadius;
         transform.Find("InfluenceRadiusVisual").gameObject.transform.localScale = Vector3.one * 2 * cl.radius;
         bool influencing = false;
-        skillCheckActive = false;
+        isSkillCheckActive = false;
     }
 
     // Update is called once per frame
@@ -124,9 +125,11 @@ public class Player : MonoBehaviour
                                 // Character is removed from drone list in day scene on next fixed update call
                                 GameData.Instance.AddFollower(obj.GetComponent<CharacterData>());
                                 toRemove.Add(obj);
-                                if (skillCheck != null)
+                                if (activeSkillCheck != null)
                                 {
-                                    Destroy(skillCheck);
+                                    Destroy(activeSkillCheck);
+                                    activeSkillCheck = null;
+                                    isSkillCheckActive = false;
                                 }
                             }
                         }
@@ -140,18 +143,21 @@ public class Player : MonoBehaviour
                 }
             }
 
-            if (UnityEngine.Random.Range(0, 10000) >= GameData.Instance.skillCheckFrequency && !skillCheckActive && collidingWithTrigger.Count != 1)
+            if (UnityEngine.Random.Range(0, 10000) >= GameData.Instance.skillCheckFrequency && !isSkillCheckActive && collidingWithTrigger.Count != 1)
             {
                 Debug.Log(collidingWithTrigger.Count);
-                Instantiate(skillCheck);
-                skillCheck.GetComponent<SkillCheck>().player = this;
-                skillCheckActive = true;
+                activeSkillCheck = Instantiate(skillCheck);
+                activeSkillCheck.GetComponent<SkillCheck>().player = this;
+                isSkillCheckActive = true;
             }
         }
     }
 
-    public void SkillCheckHit(GameObject skillCheck)
+    public void SkillCheckHit(GameObject SK)
     {
+        Destroy(SK);
+        activeSkillCheck = null;
+        isSkillCheckActive = false;
         List<GameObject> toRemove = new List<GameObject>();
         foreach (GameObject obj in collidingWithTrigger)
         {
@@ -167,9 +173,11 @@ public class Player : MonoBehaviour
                         // Character is removed from drone list in day scene on next fixed update call
                         GameData.Instance.AddFollower(obj.GetComponent<CharacterData>());
                         toRemove.Add(obj);
-                        if (skillCheck != null)
+                        if (activeSkillCheck != null)
                         {
-                            Destroy(skillCheck);
+                            Destroy(SK);
+                            activeSkillCheck = null;
+                            isSkillCheckActive=false;
                         }
                     }
                 }
@@ -181,13 +189,15 @@ public class Player : MonoBehaviour
             collidingWithTrigger.Remove(obj);
             obj.SetActive(false);
         }
-
-        Destroy(skillCheck);
-        skillCheckActive = false;
+        
     }
 
-    public void SkillCheckMiss(GameObject skillCheck)
+    public void SkillCheckMiss(GameObject SK)
     {
+        Debug.Log("Missed Skillcheck");
+        Destroy(SK);
+        activeSkillCheck = null;
+        isSkillCheckActive = false;
         List<GameObject> toRemove = new List<GameObject>();
         foreach (GameObject obj in collidingWithTrigger)
         {
@@ -203,9 +213,11 @@ public class Player : MonoBehaviour
                         // Character is removed from drone list in day scene on next fixed update call
                         GameData.Instance.AddFollower(obj.GetComponent<CharacterData>());
                         toRemove.Add(obj);
-                        if (skillCheck != null)
+                        if (activeSkillCheck != null)
                         {
-                            Destroy(skillCheck);
+                            Destroy(SK);
+                            activeSkillCheck = null;
+                            isSkillCheckActive=false;
                         }
                     }
                 }
@@ -217,17 +229,16 @@ public class Player : MonoBehaviour
             collidingWithTrigger.Remove(obj);
             obj.SetActive(false);
         }
-
-        Destroy(skillCheck);
-        skillCheckActive = false;
+        
     }
 
     public void OnAttack()
     {
         Debug.Log("Attacked");
-        if (skillCheck != null)
+        try
         {
-            skillCheck.GetComponent<SkillCheck>().attacking = true;
+            skillCheck.GetComponent<SkillCheck>().SetAttack();
         }
+        catch { }
     }
 }
