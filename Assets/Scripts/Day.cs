@@ -27,6 +27,7 @@ public class Day : MonoBehaviour
         daySlider = FindAnyObjectByType<Slider>();
         //Apply Day Length upgrades
         dayLimit = GameData.Instance.dayLength;
+        daySlider.maxValue = dayLimit;
         daySlider.value = dayLimit;
         while (drones.Count < droneQuota)
         {
