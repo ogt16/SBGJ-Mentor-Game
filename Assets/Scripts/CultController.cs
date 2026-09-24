@@ -77,7 +77,7 @@ public class CultController : MonoBehaviour
             NewCard.transform.SetParent(FollowerContainer.transform);
 
             NewCard.transform.localPosition                      = new Vector2(NewCard.GetComponent<RectTransform>().rect.width + (i * 150) - 830, 0);
-            NewCard.GetComponent<UnityEngine.UI.Image>().color   = FollowerData[i].SpriteColour;
+            NewCard.GetComponent<UnityEngine.UI.Image>().color   = FollowerData[i].shirtColour;
 
             // let the follower card access this manager so it can tell it when a card is being hovered
             NewCard.GetComponent<DragComponent>().ControllerReference = this;

@@ -7,11 +7,20 @@ public struct CharacterData
     public string FirstName;
     public string LastName;
     public CharacterGenerator.Occupation _Occupation;
-    public Color SpriteColour;
     public List<CharacterGenerator.Preferences> Likes;
     public List<CharacterGenerator.Preferences> Dislikes;
     public List<CharacterGenerator.PositiveTrait> Virtues;
     public List<CharacterGenerator.NegativeTrait> Flaws;
+
+    // Cosmetics
+    public int hairStyle;
+    public Color hairColour;
+    public Color skinColour;
+    public Color shirtColour;
+    public Color shoeColour;
+
+    
+
 
     public static bool operator ==(CharacterData c1, CharacterData c2)
     {
@@ -33,6 +42,14 @@ public class Character : MonoBehaviour
 
     public float influence;
 
+    // Sprites
+    [SerializeField] SpriteRenderer shirtSprite;
+    [SerializeField] SpriteRenderer shoesSprite;
+    [SerializeField] SpriteRenderer skinSprite;
+    [SerializeField] List<GameObject> hairStyles;
+
+    SpriteRenderer chosenHairStyle;
+
     private void Awake()
     {
         data.Likes = new List<CharacterGenerator.Preferences>();
@@ -44,7 +61,13 @@ public class Character : MonoBehaviour
 
     public void InitialiseCharacter()
     {
-        transform.Find("Square").transform.gameObject.GetComponent<SpriteRenderer>().color = data.SpriteColour;
+        // Cosmetics
+        shirtSprite.color = data.shirtColour;
+        shoesSprite.color = data.shoeColour;
+        skinSprite.color = data.skinColour;
+        hairStyles[data.hairStyle].SetActive(true);
+        chosenHairStyle = hairStyles[data.hairStyle].GetComponent<SpriteRenderer>();
+        chosenHairStyle.color = data.hairColour;
 
         // set information panel
         GameObject InformationPanel = transform.Find("InformationPanel").gameObject.transform.Find("Canvas").gameObject;
