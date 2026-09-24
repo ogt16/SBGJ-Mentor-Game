@@ -52,11 +52,11 @@ public class CharacterGenerator : MonoBehaviour
         */
 
         GameObject NewCharacter          = Instantiate(CharacterPrefab);
-        CharacterData NewCharacterData   = NewCharacter.GetComponent<CharacterData>();
+        Character NewCharacterData   = NewCharacter.GetComponent<Character>();
 
         // Randomised Name
-        NewCharacterData.FirstName       = NameData.FirstNames[Random.Range(0, NameData.FirstNames.Length)];
-        NewCharacterData.LastName        = NameData.LastNames[Random.Range(0, NameData.LastNames.Length)];
+        NewCharacterData.data.FirstName       = NameData.FirstNames[Random.Range(0, NameData.FirstNames.Length)];
+        NewCharacterData.data.LastName        = NameData.LastNames[Random.Range(0, NameData.LastNames.Length)];
 
         //Occupation (influenced by spawn weights dictionary)
         List<Occupation> occupations     = new List<Occupation>();
@@ -68,7 +68,7 @@ public class CharacterGenerator : MonoBehaviour
             }
         }
 
-        NewCharacterData._Occupation     = occupations[Random.Range(0, occupations.Count)];
+        NewCharacterData.data._Occupation     = occupations[Random.Range(0, occupations.Count)];
         List<int> PreferencesUsed        = new List<int>(); // there shouldnt be repeats in the likes and dislikes list AND there shouldnt be a like in the dislike list
 
         // CHARACTER LIKES
@@ -84,7 +84,7 @@ public class CharacterGenerator : MonoBehaviour
                 if(!PreferencesUsed.Contains(TryIndex))
                 {
                     // this is valid
-                    NewCharacterData.Likes.Add((Preferences) TryIndex);
+                    NewCharacterData.data.Likes.Add((Preferences) TryIndex);
 
                     PreferencesUsed.Add(TryIndex);
                     IsValid = true; 
@@ -105,7 +105,7 @@ public class CharacterGenerator : MonoBehaviour
                 if(!PreferencesUsed.Contains(TryIndex))
                 {
                     // this is valid
-                    NewCharacterData.Dislikes.Add((Preferences) TryIndex);
+                    NewCharacterData.data.Dislikes.Add((Preferences) TryIndex);
 
                     PreferencesUsed.Add(TryIndex);
                     IsValid = true; 
@@ -117,23 +117,23 @@ public class CharacterGenerator : MonoBehaviour
         int VirtueChance = Random.Range(0, 101);
         if(VirtueChance <= 25) // flat 25% chance BUT we can change this to a variable or an influence from upgrades
         {
-            NewCharacterData.Virtues.Add((PositiveTrait) Random.Range(0, System.Enum.GetNames(typeof(PositiveTrait)).Length));
+            NewCharacterData.data.Virtues.Add((PositiveTrait) Random.Range(0, System.Enum.GetNames(typeof(PositiveTrait)).Length));
         }
 
         //Flaws
         int FlawChance = Random.Range(0, 101);
         if(FlawChance <= 25) // flat 25% chance BUT we can change this to a variable or an influence from upgrades
         {
-            NewCharacterData.Flaws.Add((NegativeTrait) Random.Range(0, System.Enum.GetNames(typeof(NegativeTrait)).Length));
+            NewCharacterData.data.Flaws.Add((NegativeTrait) Random.Range(0, System.Enum.GetNames(typeof(NegativeTrait)).Length));
         }
 
         //Setting randomised colour
-        NewCharacterData.SpriteColour = new Color32((byte)Random.Range(1,256), (byte)Random.Range(1,256), (byte)Random.Range(1,256), 255);
+        NewCharacterData.data.SpriteColour = new Color32((byte)Random.Range(1,256), (byte)Random.Range(1,256), (byte)Random.Range(1,256), 255);
 
         // setup the information panel and all that
         NewCharacterData.InitialiseCharacter();
 
-        Debug.Log($"Creating new character: {NewCharacterData.FirstName} {NewCharacterData.LastName}");
+        Debug.Log($"Creating new character: {NewCharacterData.data.FirstName} {NewCharacterData.data.LastName}");
         return NewCharacter;
     }
 }

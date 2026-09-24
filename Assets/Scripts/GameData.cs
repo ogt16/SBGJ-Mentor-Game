@@ -4,7 +4,7 @@ using UnityEngine;
 public class GameData : MonoBehaviour
 {
     public static GameData Instance { get; private set; }
-    public List<CharacterData> followers;
+    [SerializeField] public List<CharacterData> followers;
     public List<Upgrade> upgrades = new List<Upgrade>();
 
     //Upgradable Stats + starting values
@@ -35,17 +35,18 @@ public class GameData : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         } 
+
+        followers = new List<CharacterData>();
     }
     
     public void AddFollower(CharacterData follower)
     {
-        if (follower.CompareTag("Character"))
+
+        if (!followers.Contains(follower))
         {
-            if (!followers.Contains(follower))
-            {
-                followers.Add(follower);
-            }
+            followers.Add(follower);
         }
+
     }
 
     public void RemoveFollower(CharacterData follower)
