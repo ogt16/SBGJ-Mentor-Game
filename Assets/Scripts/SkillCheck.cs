@@ -7,7 +7,7 @@ public class SkillCheck : MonoBehaviour
 
     public Player player;
     public bool attacking;
-    bool inTarget;
+    public bool inTarget;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -36,6 +36,14 @@ public class SkillCheck : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //if (transform.Find("Handle Slide Area").gameObject.transform.Find("Handle").gameObject.GetComponent<RectTransform>().rect.Overlaps(transform.Find("Target").gameObject.GetComponent<RectTransform>().rect))
+        //{
+        //    inTarget = true;
+        //}
+        //else
+        //{
+        //    inTarget = false;
+        //}
         Debug.Log(inTarget);
         GetComponent<Slider>().value+=2;
         if (GetComponent<Slider>().value >= GetComponent<Slider>().maxValue)
@@ -46,12 +54,12 @@ public class SkillCheck : MonoBehaviour
         //attacking = false;
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         inTarget = true;
     }
 
-    private void OnTriggerExit(Collider collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         inTarget = false;
     }
