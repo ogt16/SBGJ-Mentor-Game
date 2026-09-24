@@ -12,9 +12,14 @@ public class DropComponent : MonoBehaviour, IDropHandler
         eventData.pointerDrag.transform.position = transform.position;
         SceneManager.GetComponent<CultController>().AddFollowerToRitual(eventData.pointerDrag, SlotID);
 
-        eventData.pointerDrag.GetComponent<DragComponent>().InSlot = SlotID;
-        eventData.pointerDrag.GetComponent<DragComponent>().PosCache = transform.position;
 
+        if(eventData.pointerDrag.GetComponent<DragComponent>().InSlot != -1 && eventData.pointerDrag.GetComponent<DragComponent>().InSlot != SlotID)
+        {
+            // Debug.Log("Slot to slot race condition");
+            SceneManager.GetComponent<CultController>().RemoveFollowerFromRitual(eventData.pointerDrag.GetComponent<DragComponent>().InSlot);
+        }
+        eventData.pointerDrag.GetComponent<DragComponent>().InSlot       = SlotID;
+        eventData.pointerDrag.GetComponent<DragComponent>().PosCache     = transform.position;
     }
 
     public void RemoveFollowerFromSlot()
