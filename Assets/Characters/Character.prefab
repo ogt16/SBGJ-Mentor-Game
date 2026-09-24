@@ -1440,8 +1440,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3223529063192877877}
-  - component: {fileID: 4481390452029621843}
   - component: {fileID: 2909055920400775989}
+  - component: {fileID: -4638015889032255243}
   m_Layer: 0
   m_Name: Character
   m_TagString: Character

@@ -118,12 +118,12 @@ public class Player : MonoBehaviour
                         if (obj.CompareTag("Character"))
                         {
                             //Increase influence
-                            obj.GetComponent<CharacterData>().influence += GameData.Instance.influenceSpeed;
-                            obj.GetComponent<CharacterData>().transform.Find("InformationPanel").gameObject.transform.Find("Canvas").gameObject.transform.Find("InfluenceMeter").gameObject.GetComponent<Slider>().value = obj.GetComponent<CharacterData>().influence;
-                            if (obj.GetComponent<CharacterData>().influence >= 100)
+                            obj.GetComponent<Character>().influence += GameData.Instance.influenceSpeed;
+                            obj.GetComponent<Character>().transform.Find("InformationPanel").gameObject.transform.Find("Canvas").gameObject.transform.Find("InfluenceMeter").gameObject.GetComponent<Slider>().value = obj.GetComponent<Character>().influence;
+                            if (obj.GetComponent<Character>().influence >= 100)
                             {
                                 // Character is removed from drone list in day scene on next fixed update call
-                                GameData.Instance.AddFollower(obj.GetComponent<CharacterData>());
+                                GameData.Instance.AddFollower(obj.GetComponent<Character>().data);
                                 toRemove.Add(obj);
                                 if (activeSkillCheck != null)
                                 {

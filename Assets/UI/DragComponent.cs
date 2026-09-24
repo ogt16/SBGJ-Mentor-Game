@@ -59,7 +59,7 @@ public class DragComponent : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
     public void OnPointerEnter(PointerEventData eventData)
     {
         // update the information pane to the character data of this follower card
-        ControllerReference.UpdateInformationPane(transform.gameObject.GetComponent<CharacterData>());
+        ControllerReference.UpdateInformationPane(transform.gameObject.GetComponent<Character>().data);
     }
 
     public void OnPointerExit(PointerEventData eventData)

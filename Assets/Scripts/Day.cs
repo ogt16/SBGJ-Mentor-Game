@@ -14,9 +14,9 @@ public class Day : MonoBehaviour
     
     [SerializeField] Player player;
 
-    float passiveFollowerCount = 0;
-    float passiveFollowerTimer = GameData.Instance.passiveFollowerFrequency;
-    float droneSpawnTimer = GameData.Instance.droneSpawnRate;
+    float passiveFollowerCount;
+    float passiveFollowerTimer;
+    float droneSpawnTimer;
     float dayLimit;
 
     Slider daySlider;
@@ -33,6 +33,9 @@ public class Day : MonoBehaviour
         {
             SpawnNewDrone();
         }
+        passiveFollowerCount = 0;
+        passiveFollowerTimer = GameData.Instance.passiveFollowerFrequency;
+        droneSpawnTimer = GameData.Instance.droneSpawnRate;
     }
 
     private void Update()
@@ -89,8 +92,8 @@ public class Day : MonoBehaviour
         GameObject newDrone = characterGenerator.GenerateCharacter();
         newDrone.transform.Find("InformationPanel").gameObject.SetActive(false);
         //Apply Starting Influence upgrades to Drones
-        newDrone.GetComponent<CharacterData>().influence = GameData.Instance.startingInfluence;
-        newDrone.GetComponent<CharacterData>().transform.Find("InformationPanel").gameObject.transform.Find("Canvas").gameObject.transform.Find("InfluenceMeter").gameObject.GetComponent<Slider>().value = newDrone.GetComponent<CharacterData>().influence;
+        newDrone.GetComponent<Character>().influence = GameData.Instance.startingInfluence;
+        newDrone.GetComponent<Character>().transform.Find("InformationPanel").gameObject.transform.Find("Canvas").gameObject.transform.Find("InfluenceMeter").gameObject.GetComponent<Slider>().value = newDrone.GetComponent<Character>().influence;
         newDrone.transform.position = SelectSpawnPosition();
         drones.Add(newDrone);
     }
@@ -99,8 +102,8 @@ public class Day : MonoBehaviour
     {
         GameObject newFollower = characterGenerator.GenerateCharacter();
 
-        GameData.Instance.AddFollower(newFollower.GetComponent<CharacterData>());
-        newFollower.GetComponent<CharacterData>().influence = GameData.Instance.startingInfluence;
+        GameData.Instance.AddFollower(newFollower.GetComponent<Character>().data);
+        newFollower.GetComponent<Character>().influence = GameData.Instance.startingInfluence;
 
         newFollower.gameObject.SetActive(false);
 
