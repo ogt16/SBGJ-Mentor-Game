@@ -25,6 +25,7 @@ public class SkillCheck : MonoBehaviour
         transform.Find("Target").gameObject.transform.localScale = new Vector3(GameData.Instance.skillCheckDifficulty, 1, 0);
         transform.Find("Target").gameObject.transform.localPosition =new Vector3(Random.Range(-20, 70), 0 ,0);
         transform.localScale = Vector3.one;
+        
     }
 
     // Update is called once per frame
@@ -35,6 +36,7 @@ public class SkillCheck : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Debug.Log(inTarget);
         GetComponent<Slider>().value+=2;
         if (GetComponent<Slider>().value >= GetComponent<Slider>().maxValue)
         {
@@ -44,12 +46,12 @@ public class SkillCheck : MonoBehaviour
         //attacking = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider collision)
     {
         inTarget = true;
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit(Collider collision)
     {
         inTarget = false;
     }
