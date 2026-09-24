@@ -2119,7 +2119,7 @@ MonoBehaviour:
   upgrades: []
   influenceRadius: 2
   droneSpawnRate: 15
-  influenceSpeed: 20
+  influenceSpeed: 1
   dayLength: 120
   quality: 0
   passiveFollowerGain: 0
