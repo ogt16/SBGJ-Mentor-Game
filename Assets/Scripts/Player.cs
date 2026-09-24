@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     Rigidbody2D rb;
     CircleCollider2D cl;
     List<GameObject> collidingWithTrigger;
+    [SerializeField] SpriteRenderer playerSprite;
 
 
 
@@ -59,6 +60,15 @@ public class Player : MonoBehaviour
         if (rb == null) { return; }
 
         Vector2 value = input.Get<Vector2>();
+
+        if (playerSprite != null)
+        {
+            if (value.x != 0) // don't flip when stopping turning left
+            {
+                playerSprite.flipX = value.x < 0;
+            }
+        }
+
         rb.linearVelocity = value * GameData.Instance.walkSpeed;
     }
 
