@@ -35,10 +35,10 @@ public class SkillCheck : MonoBehaviour
 
     private void FixedUpdate()
     {
-        GetComponent<Slider>().value++;
+        GetComponent<Slider>().value+=2;
         if (GetComponent<Slider>().value >= GetComponent<Slider>().maxValue)
         {
-            player.SkillCheckMiss(this.gameObject);
+            player.SkillCheckMiss();
             //gameObject.SetActive(false);
         }
         //attacking = false;
@@ -54,18 +54,22 @@ public class SkillCheck : MonoBehaviour
         inTarget = false;
     }
 
-    public void SetAttack()
+    public bool SetAttack()
     {
+        attacking = true;
         Debug.Log("Attack sent!");
         if (inTarget)
         {
             Debug.Log("Hit");
-            player.SkillCheckHit(this.gameObject);
+            return true;
+            //player.SkillCheckHit();
         }
         else
         {
+            
             Debug.Log("Miss");
-            player.SkillCheckMiss(this.gameObject);
+            return false;
+            //player.SkillCheckMiss();
         }
     }
 }
