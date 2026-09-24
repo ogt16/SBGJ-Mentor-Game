@@ -42,15 +42,15 @@ public class SkillCheck : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (targetMiddleX - (targetWidth / 2) < transform.Find("Handle Slide Area").gameObject.transform.Find("Handle").gameObject.GetComponent<RectTransform>().localPosition.x && targetMiddleX + (targetWidth / 2) > transform.Find("Handle Slide Area").gameObject.transform.Find("Handle").gameObject.transform.position.x)
-        {
-            inTarget = true;
-        }
-        else
-        {
-            inTarget = false;
-        }
-        Debug.Log(inTarget);
+        //if (targetMiddleX - (targetWidth / 2) < transform.Find("Handle Slide Area").gameObject.transform.Find("Handle").gameObject.GetComponent<RectTransform>().localPosition.x && targetMiddleX + (targetWidth / 2) > transform.Find("Handle Slide Area").gameObject.transform.Find("Handle").gameObject.transform.position.x)
+        //{
+        //    inTarget = true;
+        //}
+        //else
+        //{
+        //    inTarget = false;
+        //}
+        //Debug.Log(inTarget);
         GetComponent<Slider>().value+=2;
         if (GetComponent<Slider>().value >= GetComponent<Slider>().maxValue)
         {
@@ -72,20 +72,30 @@ public class SkillCheck : MonoBehaviour
 
     public bool SetAttack()
     {
+        //Put inTarget testing in here
+        
         attacking = true;
-        Debug.Log("Attack sent!");
-        if (inTarget)
+        if (transform.Find("Handle Slide Area").gameObject.transform.Find("Handle").gameObject.GetComponent<Collider2D>().IsTouching(transform.Find("Target").gameObject.GetComponent<Collider2D>()))
         {
-            Debug.Log("Hit");
             return true;
-            //player.SkillCheckHit();
         }
         else
         {
-            
-            Debug.Log("Miss");
             return false;
-            //player.SkillCheckMiss();
         }
+        //Debug.Log("Attack sent!");
+        //if (inTarget)
+        //{
+        //    Debug.Log("Hit");
+        //    return true;
+        //    //player.SkillCheckHit();
+        //}
+        //else
+        //{
+            
+        //    Debug.Log("Miss");
+        //    return false;
+        //    //player.SkillCheckMiss();
+        //}
     }
 }
