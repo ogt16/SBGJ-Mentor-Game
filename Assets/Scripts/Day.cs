@@ -3,7 +3,7 @@ using JetBrains.Annotations;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class Day : MonoBehaviour
 {
     [SerializeField] CharacterGenerator characterGenerator;
@@ -19,11 +19,15 @@ public class Day : MonoBehaviour
     float droneSpawnTimer = GameData.Instance.droneSpawnRate;
     float dayLimit;
 
+    Slider daySlider;
+
     private void Start()
     {
         drones = new List<GameObject>();
+        daySlider = FindAnyObjectByType<Slider>();
         //Apply Day Length upgrades
         dayLimit = GameData.Instance.dayLength;
+        daySlider.value = dayLimit;
         while (drones.Count < droneQuota)
         {
             SpawnNewDrone();
@@ -46,6 +50,8 @@ public class Day : MonoBehaviour
             droneSpawnTimer = GameData.Instance.droneSpawnRate;
         }
         dayLimit -= Time.deltaTime;
+        daySlider.value = dayLimit;
+        daySlider.handleRect.transform.Rotate(0, 0, -0.05f);
         if (dayLimit < 0)
         {
             GoToNight();
@@ -83,6 +89,7 @@ public class Day : MonoBehaviour
         newDrone.transform.Find("InformationPanel").gameObject.SetActive(false);
         //Apply Starting Influence upgrades to Drones
         newDrone.GetComponent<CharacterData>().influence = GameData.Instance.startingInfluence;
+        newDrone.GetComponent<CharacterData>().transform.Find("InformationPanel").gameObject.transform.Find("Canvas").gameObject.transform.Find("InfluenceMeter").gameObject.GetComponent<Slider>().value = newDrone.GetComponent<CharacterData>().influence;
         newDrone.transform.position = SelectSpawnPosition();
         drones.Add(newDrone);
     }
