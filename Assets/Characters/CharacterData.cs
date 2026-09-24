@@ -15,6 +15,8 @@ public class CharacterData : MonoBehaviour
     public List<CharacterGenerator.PositiveTrait> Virtues    = new List<CharacterGenerator.PositiveTrait>();
     public List<CharacterGenerator.NegativeTrait> Flaws      = new List<CharacterGenerator.NegativeTrait>();
 
+    public float influence = 0;
+
     public void InitialiseCharacter()
     {
         transform.Find("Square").transform.gameObject.GetComponent<SpriteRenderer>().color = SpriteColour;
@@ -37,6 +39,7 @@ public class CharacterData : MonoBehaviour
 
         if(Flaws.Count > 0){InformationPanel.transform.Find("Flaw").gameObject.GetComponent<TextMeshProUGUI>().SetText($"{Flaws[0]}");}
         else{InformationPanel.transform.Find("Flaw").gameObject.GetComponent<TextMeshProUGUI>().SetText("");}
+
     }
 
 
