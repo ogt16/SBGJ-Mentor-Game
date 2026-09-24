@@ -1026,8 +1026,8 @@ GameObject:
   - component: {fileID: 970250557}
   - component: {fileID: 970250556}
   m_Layer: 5
-  m_Name: Canvas
-  m_TagString: Untagged
+  m_Name: DayCanvas
+  m_TagString: DayCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2126,9 +2126,9 @@ MonoBehaviour:
   passiveFollowerFrequency: 60
   startingInfluence: 0
   walkSpeed: 10
-  skillCheckDifficulty: 0
-  skillCheckPerfectReward: 0
-  skillCheckRecovery: 0
+  skillCheckDifficulty: 0.3
+  skillCheckPerfectReward: 10
+  skillCheckRecovery: 10
   skillCheckFrequency: 0
 --- !u!4 &1786905323
 Transform:

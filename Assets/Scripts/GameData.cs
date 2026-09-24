@@ -17,10 +17,10 @@ public class GameData : MonoBehaviour
     public float passiveFollowerFrequency = 60; // No upgrade for this
     public float startingInfluence = 0;
     public float walkSpeed = 10;
-    public float skillCheckDifficulty;
-    public float skillCheckPerfectReward;
-    public float skillCheckRecovery;
-    public float skillCheckFrequency;
+    public float skillCheckDifficulty;  //Target width
+    public float skillCheckPerfectReward;  //Influence gain from hitting
+    public float skillCheckRecovery;  //Lose less Influence
+    public float skillCheckFrequency;  //Percentage chance for Skill Check spawn
 
     private void Awake() 
     { 

@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     CircleCollider2D cl;
     List<GameObject> collidingWithTrigger;
     bool influencing;
+    public GameObject skillCheck;
+    bool skillCheckActive;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,6 +25,7 @@ public class Player : MonoBehaviour
         cl.radius = GameData.Instance.influenceRadius;
         transform.Find("InfluenceRadiusVisual").gameObject.transform.localScale = Vector3.one * 2 * cl.radius;
         bool influencing = false;
+        skillCheckActive = false;
     }
 
     // Update is called once per frame
@@ -121,6 +124,10 @@ public class Player : MonoBehaviour
                                 // Character is removed from drone list in day scene on next fixed update call
                                 GameData.Instance.AddFollower(obj.GetComponent<CharacterData>());
                                 toRemove.Add(obj);
+                                if (skillCheck != null)
+                                {
+                                    Destroy(skillCheck);
+                                }
                             }
                         }
                     }
@@ -132,6 +139,95 @@ public class Player : MonoBehaviour
                     obj.SetActive(false);
                 }
             }
+
+            if (UnityEngine.Random.Range(0, 10000) >= GameData.Instance.skillCheckFrequency && !skillCheckActive && collidingWithTrigger.Count != 1)
+            {
+                Debug.Log(collidingWithTrigger.Count);
+                Instantiate(skillCheck);
+                skillCheck.GetComponent<SkillCheck>().player = this;
+                skillCheckActive = true;
+            }
+        }
+    }
+
+    public void SkillCheckHit(GameObject skillCheck)
+    {
+        List<GameObject> toRemove = new List<GameObject>();
+        foreach (GameObject obj in collidingWithTrigger)
+        {
+            if (obj != null)
+            {
+                if (obj.CompareTag("Character"))
+                {
+                    //Increase influence
+                    obj.GetComponent<CharacterData>().influence += GameData.Instance.skillCheckPerfectReward;
+                    obj.GetComponent<CharacterData>().transform.Find("InformationPanel").gameObject.transform.Find("Canvas").gameObject.transform.Find("InfluenceMeter").gameObject.GetComponent<Slider>().value = obj.GetComponent<CharacterData>().influence;
+                    if (obj.GetComponent<CharacterData>().influence >= 100)
+                    {
+                        // Character is removed from drone list in day scene on next fixed update call
+                        GameData.Instance.AddFollower(obj.GetComponent<CharacterData>());
+                        toRemove.Add(obj);
+                        if (skillCheck != null)
+                        {
+                            Destroy(skillCheck);
+                        }
+                    }
+                }
+            }
+        }
+
+        foreach (GameObject obj in toRemove)
+        {
+            collidingWithTrigger.Remove(obj);
+            obj.SetActive(false);
+        }
+
+        Destroy(skillCheck);
+        skillCheckActive = false;
+    }
+
+    public void SkillCheckMiss(GameObject skillCheck)
+    {
+        List<GameObject> toRemove = new List<GameObject>();
+        foreach (GameObject obj in collidingWithTrigger)
+        {
+            if (obj != null)
+            {
+                if (obj.CompareTag("Character"))
+                {
+                    //Increase influence
+                    obj.GetComponent<CharacterData>().influence -= GameData.Instance.skillCheckRecovery;
+                    obj.GetComponent<CharacterData>().transform.Find("InformationPanel").gameObject.transform.Find("Canvas").gameObject.transform.Find("InfluenceMeter").gameObject.GetComponent<Slider>().value = obj.GetComponent<CharacterData>().influence;
+                    if (obj.GetComponent<CharacterData>().influence >= 100)
+                    {
+                        // Character is removed from drone list in day scene on next fixed update call
+                        GameData.Instance.AddFollower(obj.GetComponent<CharacterData>());
+                        toRemove.Add(obj);
+                        if (skillCheck != null)
+                        {
+                            Destroy(skillCheck);
+                        }
+                    }
+                }
+            }
+        }
+
+        foreach (GameObject obj in toRemove)
+        {
+            collidingWithTrigger.Remove(obj);
+            obj.SetActive(false);
+        }
+
+        Destroy(skillCheck);
+        skillCheckActive = false;
+    }
+
+    public void OnAttack()
+    {
+        Debug.Log("Attacked");
+        if (skillCheck != null)
+        {
+            skillCheck.GetComponent<SkillCheck>().attacking = true;
         }
     }
 }

@@ -108,20 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05fde9fdf5ab3f943ae8fdd58f4122b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  influenceRadius: 0
-  droneSpawnRate: 0
-  influenceSpeed: 0
-  dayLength: 0
-  quality: 0
-  passiveFollowerGain: 0
-  startingInfluence: 0
-  walkSpeed: 0
-  skillCheckDifficulty: 0
-  skillCheckPerfectReward: 0
-  skillCheckRecovery: 0
-  skillCheckFrequency: 0
-  passiveFollowerCount: 0
-  passiveFollowerTimer: 60
+  skillCheck: {fileID: 8748126178234086796, guid: 36bdae6c047e7c1439d40f84dfa82245, type: 3}
 --- !u!114 &6033035708347881959
 MonoBehaviour:
   m_ObjectHideFlags: 0
