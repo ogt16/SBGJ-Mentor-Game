@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3783947046759413291}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,6 +108,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05fde9fdf5ab3f943ae8fdd58f4122b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
+  influenceRadius: 0
+  droneSpawnRate: 0
+  influenceSpeed: 0
+  dayLength: 0
+  quality: 0
+  passiveFollowerGain: 0
+  startingInfluence: 0
+  walkSpeed: 0
+  skillCheckDifficulty: 0
+  skillCheckPerfectReward: 0
+  skillCheckRecovery: 0
+  skillCheckFrequency: 0
+  passiveFollowerCount: 0
+  passiveFollowerTimer: 60
 --- !u!114 &6033035708347881959
 MonoBehaviour:
   m_ObjectHideFlags: 0

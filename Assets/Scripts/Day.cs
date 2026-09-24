@@ -14,12 +14,14 @@ public class Day : MonoBehaviour
     public float DayLimit;
     [SerializeField] Player player;
 
+    public float passiveFollowerCount;
+    public float passiveFollowerTimer = GameData.Instance.passiveFollowerFrequency;
+
     private void Start()
     {
         drones = new List<GameObject>();
         //Apply Day Length upgrades
-        DayLimit = player.dayLength;
-        player.passiveFollowerTimer = 60;
+        DayLimit = GameData.Instance.dayLength;
         while (drones.Count < droneQuota)
         {
             SpawnNewDrone();
@@ -28,6 +30,13 @@ public class Day : MonoBehaviour
 
     private void Update()
     {
+        passiveFollowerTimer -= Time.deltaTime;
+        if (passiveFollowerTimer < 0)
+        {
+            passiveFollowerTimer = GameData.Instance.passiveFollowerFrequency;
+            passiveFollowerCount += GameData.Instance.passiveFollowerGain;
+        }
+
         DayLimit -= Time.deltaTime;
         if (DayLimit < 0)
         {
@@ -58,9 +67,9 @@ public class Day : MonoBehaviour
             SpawnNewDrone();
         }
 
-        while (player.passiveFollowerCount>=1)
+        while (passiveFollowerCount>=1)
         {
-            player.passiveFollowerCount--;
+            passiveFollowerCount--;
             SpawnNewPassiveFollower();
         }
     }
@@ -70,7 +79,7 @@ public class Day : MonoBehaviour
         GameObject newDrone = characterGenerator.GenerateCharacter();
         newDrone.transform.Find("InformationPanel").gameObject.SetActive(false);
         //Apply Starting Influence upgrades to Drones
-        newDrone.GetComponent<CharacterData>().influence = player.startingInfluence;
+        newDrone.GetComponent<CharacterData>().influence = GameData.Instance.startingInfluence;
         newDrone.transform.position = SelectSpawnPosition();
         drones.Add(newDrone);
     }
