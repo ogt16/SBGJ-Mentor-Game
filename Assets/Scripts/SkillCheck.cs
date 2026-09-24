@@ -11,11 +11,17 @@ public class SkillCheck : MonoBehaviour
 
     float targetWidth;
     float targetMiddleX;
+    float sliderWidth;
+    Slider slider;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         targetWidth = GameData.Instance.skillCheckDifficulty;
+        sliderWidth = GetComponent<RectTransform>().rect.width;
+        slider = GetComponent<Slider>();
+
+        slider.maxValue = sliderWidth;
 
         foreach (Canvas obj in FindObjectsByType<Canvas>(sortMode:FindObjectsSortMode.None))
         { 
@@ -30,7 +36,7 @@ public class SkillCheck : MonoBehaviour
         inTarget = false;
 
 
-        //targetMiddleX = Random.Range(targetWidth, GetComponent<RectTransform>().);
+        targetMiddleX = Random.Range(targetWidth, sliderWidth - targetWidth);
 
         transform.Find("Target").gameObject.transform.localScale = new Vector3(targetWidth, 1, 0);
         transform.Find("Target").gameObject.transform.localPosition =new Vector3(targetMiddleX, 0 ,0);
@@ -83,8 +89,9 @@ public class SkillCheck : MonoBehaviour
         //Put inTarget testing in here
         
         attacking = true;
-        if (transform.Find("Handle Slide Area").gameObject.transform.Find("Handle").gameObject.GetComponent<Collider2D>().IsTouching(transform.Find("Target").gameObject.GetComponent<Collider2D>()))
+        if (targetMiddleX - targetWidth / 2 <= slider.value && slider.value <= targetMiddleX + targetWidth / 2)
         {
+            Debug.Log("Skill check hit");
             return true;
         }
         else
