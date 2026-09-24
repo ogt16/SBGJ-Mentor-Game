@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -72,6 +73,7 @@ public class Player : MonoBehaviour
                 {
                     //Increase influence
                     obj.GetComponent<CharacterData>().influence += GameData.Instance.influenceSpeed;
+                    obj.GetComponent<CharacterData>().transform.Find("InformationPanel").gameObject.transform.Find("Canvas").gameObject.transform.Find("InfluenceMeter").gameObject.GetComponent<Slider>().value = obj.GetComponent<CharacterData>().influence;
                     if (obj.GetComponent<CharacterData>().influence >= 100)
                     {
                         // Character is removed from drone list in day scene on next fixed update call
