@@ -19,7 +19,6 @@ public struct CharacterData
     public Color shirtColour;
     public Color shoeColour;
 
-    
 
 
     public static bool operator ==(CharacterData c1, CharacterData c2)
@@ -50,6 +49,10 @@ public class Character : MonoBehaviour
 
     SpriteRenderer chosenHairStyle;
 
+    Vector2 velocity;
+    float maxWalkSpeed = 2f;
+    float accelerationChangeMax = 20;
+    Rigidbody2D rb;
     private void Awake()
     {
         data.Likes = new List<CharacterGenerator.Preferences>();
@@ -57,6 +60,28 @@ public class Character : MonoBehaviour
         data.Virtues = new List<CharacterGenerator.PositiveTrait>();
         data.Flaws = new List<CharacterGenerator.NegativeTrait>();
 
+        velocity = new Vector2(Random.Range(-10, 10), Random.Range(-10, 10));
+        if (velocity.magnitude > maxWalkSpeed)
+        {
+            velocity = velocity.normalized * maxWalkSpeed;
+        }
+
+        rb = GetComponent<Rigidbody2D>();
+
+    }
+
+    private void Update()
+    {
+        velocity += new Vector2(Random.Range(-Time.deltaTime * accelerationChangeMax, Time.deltaTime * accelerationChangeMax), Random.Range(-Time.deltaTime * accelerationChangeMax, Time.deltaTime * accelerationChangeMax));
+        if (velocity.magnitude > maxWalkSpeed)
+        {
+            velocity = velocity.normalized * maxWalkSpeed;
+        }
+
+        if (rb != null)
+        {
+            rb.linearVelocity = velocity;
+        }
     }
 
     public void InitialiseCharacter()
