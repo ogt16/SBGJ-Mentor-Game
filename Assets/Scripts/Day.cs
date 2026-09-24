@@ -90,8 +90,10 @@ public class Day : MonoBehaviour
     void SpawnNewPassiveFollower()
     {
         GameObject newFollower = characterGenerator.GenerateCharacter();
+
+        GameData.Instance.AddFollower(newFollower.GetComponent<CharacterData>());
         newFollower.GetComponent<CharacterData>().influence = GameData.Instance.startingInfluence;
-        GameData.Instance.AddFollower(newFollower);
+
         newFollower.gameObject.SetActive(false);
 
     }

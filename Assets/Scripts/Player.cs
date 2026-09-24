@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
                     if (obj.GetComponent<CharacterData>().influence >= 100)
                     {
                         // Character is removed from drone list in day scene on next fixed update call
-                        GameData.Instance.AddFollower(obj);
+                        GameData.Instance.AddFollower(obj.GetComponent<CharacterData>());
                         toRemove.Add(obj);
                     }
                 }

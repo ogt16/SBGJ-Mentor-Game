@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using TMPro;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -31,7 +33,14 @@ public class CultController : MonoBehaviour
     // Private fields
     private GameObject[] RitualStorage = new GameObject[5];
 
-    public void ClearPreviousCarousel(int Quantity)
+    // LOAD NIGHT
+    public void Start()
+    {
+        // reset all the ui elements
+        CreateNightCarousel(); // creates the followers at the bottom
+    }
+
+    private void ClearPreviousCarousel(int Quantity)
     {
         // Clear the previous carousel data and cards
         int PreviousFollowerCarousel = FollowerContainer.transform.childCount;
@@ -72,6 +81,7 @@ public class CultController : MonoBehaviour
 
             // let the follower card access this manager so it can tell it when a card is being hovered
             NewCard.GetComponent<DragComponent>().ControllerReference = this;
+            NewCard.GetComponent<DragComponent>().CarouselPosition    = NewCard.transform.localPosition;
         }
     }
 
@@ -91,10 +101,19 @@ public class CultController : MonoBehaviour
         SetupFollowerCards(Followers);
     }
 
+    // this spawns all the followers in night time
+    private void CreateNightCarousel()
+    {
+        // get the game data
+        SetupFollowerCards(GameData.Instance.followers);
+    }
+
     public void UpdateInformationPane([Optional] CharacterData FollowerData)
     {
         if(FollowerData)
         {
+            InformationPane.SetActive(true);
+
             InformationPane.transform.Find("Name").GetComponent<TextMeshProUGUI>().SetText($"{FollowerData.FirstName} {FollowerData.LastName}");
             InformationPane.transform.Find("Occupation").GetComponent<TextMeshProUGUI>().SetText($"{FollowerData._Occupation}");
 
@@ -113,12 +132,14 @@ public class CultController : MonoBehaviour
         }
         else
         {
-            InformationPane.transform.Find("Name").GetComponent<TextMeshProUGUI>().SetText($"YOU");
-            InformationPane.transform.Find("Occupation").GetComponent<TextMeshProUGUI>().SetText($"Stat 1: ______");
-            InformationPane.transform.Find("Likes").GetComponent<TextMeshProUGUI>().SetText($"Stat 2: ______");
-            InformationPane.transform.Find("Dislikes").GetComponent<TextMeshProUGUI>().SetText($"Stat 3: ______");
-            InformationPane.transform.Find("Virtue").GetComponent<TextMeshProUGUI>().SetText($"Stat 4: ______");
-            InformationPane.transform.Find("Flaw").GetComponent<TextMeshProUGUI>().SetText($"Stat 5: ______");
+            InformationPane.SetActive(false);
+
+            // InformationPane.transform.Find("Name").GetComponent<TextMeshProUGUI>().SetText($"YOU");
+            // InformationPane.transform.Find("Occupation").GetComponent<TextMeshProUGUI>().SetText($"Stat 1: ______");
+            // InformationPane.transform.Find("Likes").GetComponent<TextMeshProUGUI>().SetText($"Stat 2: ______");
+            // InformationPane.transform.Find("Dislikes").GetComponent<TextMeshProUGUI>().SetText($"Stat 3: ______");
+            // InformationPane.transform.Find("Virtue").GetComponent<TextMeshProUGUI>().SetText($"Stat 4: ______");
+            // InformationPane.transform.Find("Flaw").GetComponent<TextMeshProUGUI>().SetText($"Stat 5: ______");
         }
     }
 
@@ -461,8 +482,8 @@ public class CultController : MonoBehaviour
 
                     if the upgrade IS unlocked already:
                         Does it stack effect?
-                         Does it upgrade to the next tier?
-                          Does it unlock the recipe for the next tier?
+                        Does it upgrade to the next tier?
+                        Does it unlock the recipe for the next tier?
                 */
             }
         }
@@ -472,6 +493,21 @@ public class CultController : MonoBehaviour
             // i think a sad trumpet should play here honestly
         }
 
+        // KILL ALL THE FOLLOWERS IN RITUAL STORAGE
+        // 1. delete the cards
+        // 2. remove them from the game data singleton
+
+        foreach(GameObject Follower in RitualStorage)
+        {
+            if(GameData.Instance.followers.Contains(Follower.GetComponent<CharacterData>()))
+            {
+                GameData.Instance.followers.Remove(Follower.GetComponent<CharacterData>());
+            }
+            
+            Destroy(Follower);
+        }
+
+        RitualStorage = new GameObject[5];
     }
 
 }
