@@ -28,11 +28,12 @@ public class GameData : MonoBehaviour
         
         if (Instance != null && Instance != this) 
         { 
-            Destroy(this); 
+            Destroy(gameObject); 
         } 
         else 
         { 
-            Instance = this; 
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         } 
     }
     
