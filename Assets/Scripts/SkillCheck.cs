@@ -9,12 +9,14 @@ public class SkillCheck : MonoBehaviour
     public bool attacking;
     public bool inTarget;
 
-    float targetWidth = GameData.Instance.skillCheckDifficulty;
+    float targetWidth;
     float targetMiddleX;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        targetWidth = GameData.Instance.skillCheckDifficulty;
+
         foreach (Canvas obj in FindObjectsByType<Canvas>(sortMode:FindObjectsSortMode.None))
         { 
             if (obj.CompareTag("DayCanvas") == true)
@@ -75,9 +77,9 @@ public class SkillCheck : MonoBehaviour
     public bool SetAttack()
     {
 
-        if (GetComponent<Slider>.value)
-        {
-        }
+        // if (GetComponent<Slider>().value)
+        // {
+        // }
         //Put inTarget testing in here
         
         attacking = true;
