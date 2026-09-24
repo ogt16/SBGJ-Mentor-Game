@@ -13,6 +13,8 @@ public class DropComponent : MonoBehaviour, IDropHandler
         SceneManager.GetComponent<CultController>().AddFollowerToRitual(eventData.pointerDrag, SlotID);
 
         eventData.pointerDrag.GetComponent<DragComponent>().InSlot = SlotID;
+        eventData.pointerDrag.GetComponent<DragComponent>().PosCache = transform.position;
+
     }
 
     public void RemoveFollowerFromSlot()

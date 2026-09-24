@@ -839,11 +839,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2639885444212724169, guid: e68555284231eed47861733c2d540656, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -139
+      value: -133
       objectReference: {fileID: 0}
     - target: {fileID: 2639885444212724169, guid: e68555284231eed47861733c2d540656, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -221
+      value: -187
       objectReference: {fileID: 0}
     - target: {fileID: 2639885444212724169, guid: e68555284231eed47861733c2d540656, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -860,6 +860,10 @@ PrefabInstance:
     - target: {fileID: 8586220249397567951, guid: e68555284231eed47861733c2d540656, type: 3}
       propertyPath: m_Name
       value: Slot (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586220249397567951, guid: e68555284231eed47861733c2d540656, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2822,7 +2826,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1116781623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4581,11 +4585,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2639885444212724169, guid: e68555284231eed47861733c2d540656, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 299
+      value: 305
       objectReference: {fileID: 0}
     - target: {fileID: 2639885444212724169, guid: e68555284231eed47861733c2d540656, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 89
+      value: 123
       objectReference: {fileID: 0}
     - target: {fileID: 2639885444212724169, guid: e68555284231eed47861733c2d540656, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4602,6 +4606,10 @@ PrefabInstance:
     - target: {fileID: 8586220249397567951, guid: e68555284231eed47861733c2d540656, type: 3}
       propertyPath: m_Name
       value: Slot (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586220249397567951, guid: e68555284231eed47861733c2d540656, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4828,11 +4836,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2639885444212724169, guid: e68555284231eed47861733c2d540656, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 136
+      value: 142
       objectReference: {fileID: 0}
     - target: {fileID: 2639885444212724169, guid: e68555284231eed47861733c2d540656, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -221
+      value: -187
       objectReference: {fileID: 0}
     - target: {fileID: 2639885444212724169, guid: e68555284231eed47861733c2d540656, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4849,6 +4857,10 @@ PrefabInstance:
     - target: {fileID: 8586220249397567951, guid: e68555284231eed47861733c2d540656, type: 3}
       propertyPath: m_Name
       value: Slot (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586220249397567951, guid: e68555284231eed47861733c2d540656, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5591,11 +5603,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2639885444212724169, guid: e68555284231eed47861733c2d540656, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -315
+      value: -309
       objectReference: {fileID: 0}
     - target: {fileID: 2639885444212724169, guid: e68555284231eed47861733c2d540656, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 89
+      value: 123
       objectReference: {fileID: 0}
     - target: {fileID: 2639885444212724169, guid: e68555284231eed47861733c2d540656, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5612,6 +5624,10 @@ PrefabInstance:
     - target: {fileID: 8586220249397567951, guid: e68555284231eed47861733c2d540656, type: 3}
       propertyPath: m_Name
       value: Slot (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586220249397567951, guid: e68555284231eed47861733c2d540656, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5772,6 +5788,7 @@ GameObject:
   - component: {fileID: 1830328518}
   - component: {fileID: 1830328519}
   - component: {fileID: 1830328520}
+  - component: {fileID: 1830328521}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -5888,6 +5905,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6ed2df4a6704b9847a65980f5cca4bde, type: 2}
   - {fileID: 11400000, guid: 0e2a9dc33ffa5dd4184b579a586429b0, type: 2}
   - {fileID: 11400000, guid: aa789fa64a6758647bf2685b9dc9240c, type: 2}
+--- !u!114 &1830328521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830328515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1275cc48d04f3340add235d15d60477, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterGenerator
+  CharacterPrefab: {fileID: 8361648703538082488, guid: 76a184cf576a7ee40972bd1cde4e77d9, type: 3}
 --- !u!1 &1846564843
 GameObject:
   m_ObjectHideFlags: 0
@@ -6210,11 +6240,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2639885444212724169, guid: e68555284231eed47861733c2d540656, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2639885444212724169, guid: e68555284231eed47861733c2d540656, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 336
+      value: 370
       objectReference: {fileID: 0}
     - target: {fileID: 2639885444212724169, guid: e68555284231eed47861733c2d540656, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6231,6 +6261,10 @@ PrefabInstance:
     - target: {fileID: 8586220249397567951, guid: e68555284231eed47861733c2d540656, type: 3}
       propertyPath: m_Name
       value: Slot
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586220249397567951, guid: e68555284231eed47861733c2d540656, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

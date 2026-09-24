@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -79,38 +80,39 @@ public class CultController : MonoBehaviour
 
             // let the follower card access this manager so it can tell it when a card is being hovered
             NewCard.GetComponent<DragComponent>().ControllerReference = this;
+            NewCard.GetComponent<DragComponent>().CarouselPosition    = NewCard.transform.localPosition;
         }
     }
 
-    // [ContextMenu("Debug Create Follower Carousel")]
-    // public void DebugRitual()
-    // {
-    //     // create dummy followers and add them to the carousel to be used in the ritual
-    //     int Quantity = Random.Range(5,8);
-    //     List<CharacterData> Followers = new List<CharacterData>();
+    [ContextMenu("Debug Create Follower Carousel")]
+    public void DebugRitual()
+    {
+        // create dummy followers and add them to the carousel to be used in the ritual
+        int Quantity = Random.Range(5,8);
+        List<CharacterData> Followers = new List<CharacterData>();
 
-    //     for(int i = 0; i < Quantity; i++)
-    //     {
-    //         GameObject NewFollower = GetComponent<CharacterGenerator>().GenerateCharacter();
-    //         Followers.Add(NewFollower.GetComponent<CharacterData>());
-    //     }
+        for(int i = 0; i < Quantity; i++)
+        {
+            GameObject NewFollower = GetComponent<CharacterGenerator>().GenerateCharacter();
+            Followers.Add(NewFollower.GetComponent<CharacterData>());
+        }
 
-    //     SetupFollowerCards(Followers);
-    // }
+        SetupFollowerCards(Followers);
+    }
 
     // this spawns all the followers in night time
     private void CreateNightCarousel()
     {
         // get the game data
-        GameData _data = this.transform.gameObject.GetComponent<GameData>();
-        SetupFollowerCards(_data.followers);
-
+        SetupFollowerCards(GameData.Instance.followers);
     }
 
     public void UpdateInformationPane([Optional] CharacterData FollowerData)
     {
         if(FollowerData)
         {
+            InformationPane.SetActive(true);
+
             InformationPane.transform.Find("Name").GetComponent<TextMeshProUGUI>().SetText($"{FollowerData.FirstName} {FollowerData.LastName}");
             InformationPane.transform.Find("Occupation").GetComponent<TextMeshProUGUI>().SetText($"{FollowerData._Occupation}");
 
@@ -129,12 +131,14 @@ public class CultController : MonoBehaviour
         }
         else
         {
-            InformationPane.transform.Find("Name").GetComponent<TextMeshProUGUI>().SetText($"YOU");
-            InformationPane.transform.Find("Occupation").GetComponent<TextMeshProUGUI>().SetText($"Stat 1: ______");
-            InformationPane.transform.Find("Likes").GetComponent<TextMeshProUGUI>().SetText($"Stat 2: ______");
-            InformationPane.transform.Find("Dislikes").GetComponent<TextMeshProUGUI>().SetText($"Stat 3: ______");
-            InformationPane.transform.Find("Virtue").GetComponent<TextMeshProUGUI>().SetText($"Stat 4: ______");
-            InformationPane.transform.Find("Flaw").GetComponent<TextMeshProUGUI>().SetText($"Stat 5: ______");
+            InformationPane.SetActive(false);
+
+            // InformationPane.transform.Find("Name").GetComponent<TextMeshProUGUI>().SetText($"YOU");
+            // InformationPane.transform.Find("Occupation").GetComponent<TextMeshProUGUI>().SetText($"Stat 1: ______");
+            // InformationPane.transform.Find("Likes").GetComponent<TextMeshProUGUI>().SetText($"Stat 2: ______");
+            // InformationPane.transform.Find("Dislikes").GetComponent<TextMeshProUGUI>().SetText($"Stat 3: ______");
+            // InformationPane.transform.Find("Virtue").GetComponent<TextMeshProUGUI>().SetText($"Stat 4: ______");
+            // InformationPane.transform.Find("Flaw").GetComponent<TextMeshProUGUI>().SetText($"Stat 5: ______");
         }
     }
 
@@ -474,8 +478,8 @@ public class CultController : MonoBehaviour
 
                     if the upgrade IS unlocked already:
                         Does it stack effect?
-                         Does it upgrade to the next tier?
-                          Does it unlock the recipe for the next tier?
+                        Does it upgrade to the next tier?
+                        Does it unlock the recipe for the next tier?
                 */
             }
         }
@@ -484,6 +488,10 @@ public class CultController : MonoBehaviour
             //the player has sacrificed 5 followers for no reason!
             // i think a sad trumpet should play here honestly
         }
+
+        // KILL ALL THE FOLLOWERS IN RITUAL STORAGE
+        // 1. delete the cards
+        // 2. remove them from the game data singleton
 
     }
 
