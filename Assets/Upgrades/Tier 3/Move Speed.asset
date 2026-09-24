@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0809b619d6a34d246ac246a18089fc9f, type: 3}
-  m_Name: Starting Influence
+  m_Name: Move Speed
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade
-  DisplayName: 
+  DisplayName: Track and field career ++
   Icon: {fileID: 0}
-  OccupationRequirements: 0d000000
-  VirtueRequirements: 09000000
-  FlawRequirements: 
+  RewardText: Run around faster
+  OccupationRequirements: 0700000007000000
+  VirtueRequirements: 
+  FlawRequirements: 0800000008000000

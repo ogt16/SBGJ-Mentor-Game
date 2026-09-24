@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0809b619d6a34d246ac246a18089fc9f, type: 3}
-  m_Name: Spawn Rate
+  m_Name: Skill Check Recovery
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade
-  DisplayName: 
+  DisplayName: Gift of the gab +
   Icon: {fileID: 0}
-  OccupationRequirements: 05000000
+  RewardText: Failing a skill check isn't as bad as it used to be
+  OccupationRequirements: 0200000002000000
   VirtueRequirements: 
-  FlawRequirements: 0200000002000000
+  FlawRequirements: 

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -11,13 +12,21 @@ public class CultController : MonoBehaviour
     // this is used in the night scene for sacrificing the cult members and having an outcome to the ritual.
     // essentially the backend of the night loop. will need hooking into the UI created
 
-    public Upgrade[] RitualUpgrades; // all the scriptable objects for the ritual results
+    private List<Upgrade> RitualUpgrades = new List<Upgrade>(); // all the scriptable objects for the ritual results
 
     [Header("UI Elements")]
     public GameObject InformationPane;
     public GameObject RitualUpgradeScreen;
     public GameObject FollowerContainer;
     public GameObject FollowerCardPrefab;
+    public GameObject HoverDataBlock;
+    public GameObject[] RitualGridSlots;
+
+    [Header("Upgrade Data")]
+    public Upgrade[] Tier1Upgrades;
+    public Upgrade[] Tier2Upgrades;
+    public Upgrade[] Tier3Upgrades;
+
 
     // Private fields
     private GameObject[] RitualStorage = new GameObject[5];
@@ -113,6 +122,98 @@ public class CultController : MonoBehaviour
         }
     }
 
+    private void SetGridSlot(Upgrade _upgrade, GameObject GridSlot)
+    {
+        // set the grid slot to the upgrade information
+        // handle if the upgrade is locked or unlocked
+
+        GridSlot.GetComponent<RitualSlotComponent>().InitSlot(false, _upgrade, this); // debug nothing is locked- this should be hooked into unlocking of upgrades
+    }
+
+    private void InitialiseUpgrades(int Tier)
+    {
+        switch (Tier)
+        {
+            case 1:
+                RitualUpgradeScreen.transform.Find("GridBacking").gameObject.GetComponent<Image>().color = new Color(0, 44, 58, 128);
+
+                for(int i = 0; i < Tier1Upgrades.Length; i ++)
+                {
+                    SetGridSlot(Tier1Upgrades[i], RitualGridSlots[i]);
+                }
+                break;
+
+            case 2:
+                RitualUpgradeScreen.transform.Find("GridBacking").gameObject.GetComponent<Image>().color = new Color(44, 0, 58, 128);
+
+                for(int i = 0; i < Tier2Upgrades.Length; i ++)
+                {
+                    SetGridSlot(Tier2Upgrades[i], RitualGridSlots[i]);
+                }
+                break;
+
+            case 3:
+                RitualUpgradeScreen.transform.Find("GridBacking").gameObject.GetComponent<Image>().color = new Color(58, 44, 0, 128);
+
+                for(int i = 0; i < Tier3Upgrades.Length; i ++)
+                {
+                    SetGridSlot(Tier3Upgrades[i], RitualGridSlots[i]);
+                }
+                break;
+        }
+    }
+
+    public void UpdateRitualHoverDisplay([Optional]Upgrade _upgrade)
+    {
+        if(_upgrade)
+        {
+            HoverDataBlock.transform.Find("Name").gameObject.GetComponent<TextMeshProUGUI>().SetText(_upgrade.DisplayName);
+
+            // recipe
+            string RecipeString = "";
+            if(_upgrade.OccupationRequirements.Count > 0)
+            {
+                Dictionary<CharacterGenerator.Occupation, int> JobDictionary = ListToDictOcc(_upgrade.OccupationRequirements);
+                foreach(KeyValuePair<CharacterGenerator.Occupation, int> Job in JobDictionary)
+                {
+                    RecipeString += $"{Job.Value} x {Job.Key} \n";
+                }
+            }
+
+            if(_upgrade.VirtueRequirements.Count > 0)
+            {
+                Dictionary<CharacterGenerator.PositiveTrait, int> VirtueDictionary = ListToDictVirtue(_upgrade.VirtueRequirements);
+                foreach(KeyValuePair<CharacterGenerator.PositiveTrait, int> Virtue in VirtueDictionary)
+                {
+                    RecipeString += $"{Virtue.Value} x {Virtue.Key} \n";
+                }
+            }
+
+            if(_upgrade.FlawRequirements.Count > 0)
+            {
+                Dictionary<CharacterGenerator.NegativeTrait, int> FlawDictionary = ListToDictFlaw(_upgrade.FlawRequirements);
+                foreach(KeyValuePair<CharacterGenerator.NegativeTrait, int> Flaw in FlawDictionary)
+                {
+                    RecipeString += $"{Flaw.Value} x {Flaw.Key} \n";
+                }
+            }
+
+            HoverDataBlock.transform.Find("Recipe").gameObject.GetComponent<TextMeshProUGUI>().SetText(RecipeString);
+
+            // reward
+            HoverDataBlock.transform.Find("Reward").gameObject.GetComponent<TextMeshProUGUI>().SetText($"= {_upgrade.RewardText}");
+        }
+        else
+        {
+            // clear the display
+            HoverDataBlock.transform.Find("Name").gameObject.GetComponent<TextMeshProUGUI>().SetText("");
+            HoverDataBlock.transform.Find("Recipe").gameObject.GetComponent<TextMeshProUGUI>().SetText("");
+            HoverDataBlock.transform.Find("Reward").gameObject.GetComponent<TextMeshProUGUI>().SetText("");
+
+
+        }
+    }
+
     public void ToggleRitualUpgradeScreen(bool ShouldOpen)
     {
         //if given time it would be a nice addition to animate this sliding onto the screen
@@ -121,12 +222,20 @@ public class CultController : MonoBehaviour
         {
             RitualUpgradeScreen.SetActive(true);
 
+            // initialise unlocked rituals
+            InitialiseUpgrades(1);
+
         }
         else
         {
             //hide it
             RitualUpgradeScreen.SetActive(false);
         }
+    }
+
+    public void SetTierDisplay(int Tier)
+    {
+        InitialiseUpgrades(Tier);
     }
 
 
@@ -180,7 +289,7 @@ public class CultController : MonoBehaviour
             }
             else
             {
-                CreatedDictionary.Add(RequirementType, 0);
+                CreatedDictionary.Add(RequirementType, 1);
             }
         }
 
@@ -200,7 +309,7 @@ public class CultController : MonoBehaviour
             }
             else
             {
-                CreatedDictionary.Add(RequirementType, 0);
+                CreatedDictionary.Add(RequirementType, 1);
             }
         }
 
@@ -220,7 +329,7 @@ public class CultController : MonoBehaviour
             }
             else
             {
-                CreatedDictionary.Add(RequirementType, 0);
+                CreatedDictionary.Add(RequirementType, 1);
             }
         }
 
@@ -273,6 +382,11 @@ public class CultController : MonoBehaviour
         Dictionary<CharacterGenerator.Occupation, int> OccupationResults = ListToDictOcc(OccupationRequirementsFulfilled);
         Dictionary<CharacterGenerator.PositiveTrait, int> VirtueResults  = ListToDictVirtue(PositiveTraitsFulfilled);
         Dictionary<CharacterGenerator.NegativeTrait, int> FlawResults    = ListToDictFlaw(NegativeTraitsFulfilled);
+
+
+        foreach(Upgrade upgrade in Tier1Upgrades){RitualUpgrades.Add(upgrade);}
+        foreach(Upgrade upgrade in Tier2Upgrades){RitualUpgrades.Add(upgrade);}
+        foreach(Upgrade upgrade in Tier3Upgrades){RitualUpgrades.Add(upgrade);}
 
 
         // go through all the upgrades and see if any of the conditions are satisfied
