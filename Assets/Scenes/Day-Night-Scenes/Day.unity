@@ -2123,7 +2123,7 @@ MonoBehaviour:
   dayLength: 120
   quality: 0
   passiveFollowerGain: 0
-  passiveFollowerFrequency: 0
+  passiveFollowerFrequency: 60
   startingInfluence: 0
   walkSpeed: 10
   skillCheckDifficulty: 0

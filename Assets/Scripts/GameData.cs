@@ -14,7 +14,7 @@ public class GameData : MonoBehaviour
     public float dayLength = 120;
     public float quality;
     public float passiveFollowerGain = 0;
-    public float passiveFollowerFrequency; // No upgrade for this
+    public float passiveFollowerFrequency = 60; // No upgrade for this
     public float startingInfluence = 0;
     public float walkSpeed = 10;
     public float skillCheckDifficulty;
@@ -85,7 +85,7 @@ public class GameData : MonoBehaviour
                 quality += upgrade.upgradeStatDifference;
                 break;
             case UpgradeStatToChange.PASSIVE_FOLLOWER_GAIN:
-                passiveFollowerFrequency += upgrade.upgradeStatDifference;
+                passiveFollowerGain += upgrade.upgradeStatDifference;
                 break;
             case UpgradeStatToChange.STARTING_INFLUENCE:
                 startingInfluence += upgrade.upgradeStatDifference;
