@@ -8,6 +8,10 @@ public class SkillCheck : MonoBehaviour
     public Player player;
     public bool attacking;
     public bool inTarget;
+
+    float targetWidth = GameData.Instance.skillCheckDifficulty;
+    float targetMiddleX;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,8 +26,10 @@ public class SkillCheck : MonoBehaviour
         transform.localPosition = Vector3.zero;
         attacking = false;
         inTarget = false;
-        transform.Find("Target").gameObject.transform.localScale = new Vector3(GameData.Instance.skillCheckDifficulty, 1, 0);
-        transform.Find("Target").gameObject.transform.localPosition =new Vector3(Random.Range(-20, 70), 0 ,0);
+        targetMiddleX = Random.Range(-20, 70);
+
+        transform.Find("Target").gameObject.transform.localScale = new Vector3(targetWidth, 1, 0);
+        transform.Find("Target").gameObject.transform.localPosition =new Vector3(targetMiddleX, 0 ,0);
         transform.localScale = Vector3.one;
         
     }
@@ -36,14 +42,14 @@ public class SkillCheck : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //if (transform.Find("Handle Slide Area").gameObject.transform.Find("Handle").gameObject.GetComponent<RectTransform>().rect.Overlaps(transform.Find("Target").gameObject.GetComponent<RectTransform>().rect))
-        //{
-        //    inTarget = true;
-        //}
-        //else
-        //{
-        //    inTarget = false;
-        //}
+        if (targetMiddleX - (targetWidth / 2) < transform.Find("Handle Slide Area").gameObject.transform.Find("Handle").gameObject.transform.localPosition.x && targetMiddleX + (targetWidth / 2) > transform.Find("Handle Slide Area").gameObject.transform.Find("Handle").gameObject.transform.position.x)
+        {
+            inTarget = true;
+        }
+        else
+        {
+            inTarget = false;
+        }
         Debug.Log(inTarget);
         GetComponent<Slider>().value+=2;
         if (GetComponent<Slider>().value >= GetComponent<Slider>().maxValue)
