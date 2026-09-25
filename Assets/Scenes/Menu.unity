@@ -801,17 +801,17 @@ MonoBehaviour:
   upgrades: []
   influenceRadius: 2
   droneSpawnRate: 15
-  influenceSpeed: 20
+  influenceSpeed: 0.5
   dayLength: 120
-  quality: 0
+  quality: 25
   passiveFollowerGain: 0
-  passiveFollowerFrequency: 0
+  passiveFollowerFrequency: 60
   startingInfluence: 0
   walkSpeed: 10
-  skillCheckDifficulty: 0
-  skillCheckPerfectReward: 0
-  skillCheckRecovery: 0
-  skillCheckFrequency: 0
+  skillCheckDifficulty: 0.15
+  skillCheckPerfectReward: 20
+  skillCheckRecovery: 10
+  skillCheckFrequency: 9500
 --- !u!4 &1446875182
 Transform:
   m_ObjectHideFlags: 0
