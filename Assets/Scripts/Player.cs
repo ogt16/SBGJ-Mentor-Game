@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.Windows;
+using UnityEngine.XR;
 
 public class Player : MonoBehaviour
 {
@@ -208,6 +209,10 @@ public class Player : MonoBehaviour
                 {
                     //Increase influence
                     obj.GetComponent<Character>().influence -= GameData.Instance.skillCheckRecovery;
+                    if (obj.GetComponent<Character>().influence < 0)
+                    {
+                        obj.GetComponent<Character>().influence = 0;
+                    }
                     obj.GetComponent<Character>().transform.Find("InformationPanel").gameObject.transform.Find("Canvas").gameObject.transform.Find("InfluenceMeter").gameObject.GetComponent<Slider>().value = obj.GetComponent<Character>().influence;
                     if (obj.GetComponent<Character>().influence >= 100)
                     {
