@@ -16,7 +16,7 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 52f4fd5ddb08af848b73b5c5b80018d0, type: 3}
   RewardText: More drones spawn
   upgradeStatToChange: 1
-  upgradeStatDifference: 1
-  OccupationRequirements: 05000000
+  upgradeStatDifference: -2
+  OccupationRequirements: 0500000005000000
   VirtueRequirements: 
-  FlawRequirements: 0200000002000000
+  FlawRequirements: 

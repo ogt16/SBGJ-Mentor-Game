@@ -115,14 +115,14 @@ public class CharacterGenerator : MonoBehaviour
 
         // Virtues
         int VirtueChance = Random.Range(0, 101);
-        if(VirtueChance <= 25) // flat 25% chance BUT we can change this to a variable or an influence from upgrades
+        if(VirtueChance <= GameData.Instance.quality) // flat 25% chance BUT we can change this to a variable or an influence from upgrades
         {
             NewCharacterData.data.Virtues.Add((PositiveTrait) Random.Range(0, System.Enum.GetNames(typeof(PositiveTrait)).Length));
         }
 
         //Flaws
         int FlawChance = Random.Range(0, 101);
-        if(FlawChance <= 25) // flat 25% chance BUT we can change this to a variable or an influence from upgrades
+        if(FlawChance <= GameData.Instance.quality) // flat 25% chance BUT we can change this to a variable or an influence from upgrades
         {
             NewCharacterData.data.Flaws.Add((NegativeTrait) Random.Range(0, System.Enum.GetNames(typeof(NegativeTrait)).Length));
         }

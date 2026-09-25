@@ -16,7 +16,7 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 047142ea7e6c2734d8112def975a605d, type: 3}
   RewardText: Skill checks are more forgiving when influencing
   upgradeStatToChange: 8
-  upgradeStatDifference: 1
-  OccupationRequirements: 
+  upgradeStatDifference: 0.05
+  OccupationRequirements: 0d0000000d000000
   VirtueRequirements: 
-  FlawRequirements: 0000000000000000
+  FlawRequirements: 

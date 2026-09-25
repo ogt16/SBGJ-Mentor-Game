@@ -16,7 +16,7 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: def521467ebbc854987d22c8f012e9ba, type: 3}
   RewardText: Influence drones quicker
   upgradeStatToChange: 2
-  upgradeStatDifference: 10
+  upgradeStatDifference: 0.25
   OccupationRequirements: 01000000
-  VirtueRequirements: 0000000005000000
+  VirtueRequirements: 
   FlawRequirements: 
