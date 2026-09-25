@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Day Length
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade
   DisplayName: Solstice Sacrifice
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: d70f37092841e3c4abe2543dc526c792, type: 3}
   RewardText: More hours in the day to influence people
   upgradeStatToChange: 3
   upgradeStatDifference: 20

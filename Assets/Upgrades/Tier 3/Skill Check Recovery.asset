@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Skill Check Recovery
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade
   DisplayName: Gift of the gab ++
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: e154df9b94e42c843b50082f8bb08339, type: 3}
   RewardText: Failing a skill check isn't as bad as it used to be
   upgradeStatToChange: 10
   upgradeStatDifference: 3

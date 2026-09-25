@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Skill Check Frequency
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade
   DisplayName: Yapper
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 65634a1fb1237a74eb3a012cd286d855, type: 3}
   RewardText: Talk at drones more!
   upgradeStatToChange: 11
   upgradeStatDifference: 1
