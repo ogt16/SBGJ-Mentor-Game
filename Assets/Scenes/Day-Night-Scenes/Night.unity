@@ -3990,7 +3990,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: = Passive follower gain
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 35ae18153e5216f4cbe432510c4c9ea5, type: 2}
   m_sharedMaterial: {fileID: 7668426908905740714, guid: 35ae18153e5216f4cbe432510c4c9ea5, type: 2}
@@ -4017,7 +4017,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 52.7
+  m_fontSize: 42
   m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5174,8 +5174,8 @@ Camera:
   m_GameObject: {fileID: 1746184507}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -5579,7 +5579,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Incredibly long upgrade name
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 35ae18153e5216f4cbe432510c4c9ea5, type: 2}
   m_sharedMaterial: {fileID: 7668426908905740714, guid: 35ae18153e5216f4cbe432510c4c9ea5, type: 2}
@@ -5606,7 +5606,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64.95
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5844,11 +5844,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '2 x Florist
-
-    1 x Charismatic
-
-    1 x Needy'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 35ae18153e5216f4cbe432510c4c9ea5, type: 2}
   m_sharedMaterial: {fileID: 7668426908905740714, guid: 35ae18153e5216f4cbe432510c4c9ea5, type: 2}
@@ -5875,7 +5871,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 61.3
+  m_fontSize: 42
   m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 1

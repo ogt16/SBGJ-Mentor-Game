@@ -10,7 +10,6 @@ public class Menu : MonoBehaviour
     [SerializeField] Image unpressedImage;
     [SerializeField] Image hoverImage;
     [SerializeField] Image pressedImage;
-    SceneAsset DayScene;
 
     float defaultScale;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
