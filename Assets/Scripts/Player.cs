@@ -67,6 +67,7 @@ public class Player : MonoBehaviour
         rb.linearVelocity = value * GameData.Instance.walkSpeed;
     }
 
+    //KEEP JUMP BUTTON A VALUE TO DETECT WHEN RELEASED
     public void OnJump(InputValue input)
     {
         //List<GameObject> toRemove = new List<GameObject>();
@@ -237,7 +238,7 @@ public class Player : MonoBehaviour
         Debug.Log("Attacked");
         try
         {
-            if (skillCheck.GetComponent<SkillCheck>().SetAttack()==true)
+            if (activeSkillCheck.GetComponent<SkillCheck>().SetAttack()==true)
             {
                 SkillCheckHit();
             }

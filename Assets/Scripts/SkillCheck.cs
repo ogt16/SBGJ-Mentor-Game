@@ -12,6 +12,7 @@ public class SkillCheck : MonoBehaviour
     float targetWidth;
     float targetMiddleX;
     float sliderWidth;
+    float trueWidth;
     Slider slider;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -21,7 +22,7 @@ public class SkillCheck : MonoBehaviour
         sliderWidth = GetComponent<RectTransform>().rect.width;
         slider = GetComponent<Slider>();
 
-        slider.maxValue = sliderWidth;
+        slider.maxValue = sliderWidth - 80;
 
         foreach (Canvas obj in FindObjectsByType<Canvas>(sortMode:FindObjectsSortMode.None))
         { 
@@ -35,11 +36,13 @@ public class SkillCheck : MonoBehaviour
         attacking = false;
         inTarget = false;
 
-
-        targetMiddleX = Random.Range(targetWidth, sliderWidth - targetWidth);
-
-        transform.Find("Target").gameObject.transform.localScale = new Vector3(targetWidth, 1, 0);
+        trueWidth = targetWidth * (transform.Find("Target").gameObject.GetComponent<RectTransform>().rect.max.x - transform.Find("Target").gameObject.GetComponent<RectTransform>().rect.min.x);
+        targetMiddleX = Random.Range(trueWidth, sliderWidth - trueWidth);
+        //targetMiddleX = Random.Range(-20, 70);
         transform.Find("Target").gameObject.transform.localPosition =new Vector3(targetMiddleX, 0 ,0);
+        transform.Find("Target").gameObject.transform.localScale = new Vector3(targetWidth, 1, 0);
+        Debug.Log(transform.Find("Target").gameObject.GetComponent<RectTransform>().rect.max.x - transform.Find("Target").gameObject.GetComponent<RectTransform>().rect.min.x);
+        
         transform.localScale = Vector3.one;
         
     }
@@ -89,7 +92,10 @@ public class SkillCheck : MonoBehaviour
         //Put inTarget testing in here
         
         attacking = true;
-        if (targetMiddleX - targetWidth / 2 <= slider.value && slider.value <= targetMiddleX + targetWidth / 2)
+        Debug.Log(targetMiddleX - (trueWidth / 2));
+        Debug.Log(slider.value);
+        Debug.Log(targetMiddleX + (trueWidth / 2));
+        if (targetMiddleX - (trueWidth / 2) <= slider.value && slider.value <= targetMiddleX + (trueWidth / 2))
         {
             Debug.Log("Skill check hit");
             return true;
