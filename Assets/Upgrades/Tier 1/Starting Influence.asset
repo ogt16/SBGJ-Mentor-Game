@@ -16,7 +16,7 @@ MonoBehaviour:
   Icon: {fileID: 0}
   RewardText: Drones start more influenced
   upgradeStatToChange: 6
-  upgradeStatDifference: 1
+  upgradeStatDifference: 2
   OccupationRequirements: 0d000000
   VirtueRequirements: 09000000
   FlawRequirements: 

@@ -16,7 +16,7 @@ MonoBehaviour:
   Icon: {fileID: 0}
   RewardText: Talk at drones more!
   upgradeStatToChange: 11
-  upgradeStatDifference: 3
+  upgradeStatDifference: -1000
   OccupationRequirements: 
   VirtueRequirements: 080000000800000008000000
   FlawRequirements: 

@@ -16,7 +16,7 @@ MonoBehaviour:
   Icon: {fileID: 0}
   RewardText: Failing a skill check isn't as bad as it used to be
   upgradeStatToChange: 10
-  upgradeStatDifference: 1
+  upgradeStatDifference: -5
   OccupationRequirements: 
   VirtueRequirements: 0300000003000000
   FlawRequirements: 

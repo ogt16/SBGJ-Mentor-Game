@@ -16,7 +16,7 @@ MonoBehaviour:
   Icon: {fileID: 0}
   RewardText: Hitting skill checks build more influence
   upgradeStatToChange: 9
-  upgradeStatDifference: 3
+  upgradeStatDifference: 10
   OccupationRequirements: 0400000004000000
   VirtueRequirements: 070000000700000007000000
   FlawRequirements: 
