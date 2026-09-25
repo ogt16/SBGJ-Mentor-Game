@@ -17,6 +17,6 @@ MonoBehaviour:
   RewardText: Influence drones from further away
   upgradeStatToChange: 0
   upgradeStatDifference: 3
-  OccupationRequirements: 00000000000000000b000000
-  VirtueRequirements: 02000000020000000200000006000000
+  OccupationRequirements: 0b0000000b000000
+  VirtueRequirements: 0200000002000000
   FlawRequirements: 

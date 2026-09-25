@@ -12,7 +12,7 @@ public class GameData : MonoBehaviour
     public float droneSpawnRate = 15;
     public float influenceSpeed = 1;
     public float dayLength = 120;
-    public float quality;
+    public float quality = 25;
     public float passiveFollowerGain = 0;
     public float passiveFollowerFrequency = 60; // No upgrade for this
     public float startingInfluence = 0;

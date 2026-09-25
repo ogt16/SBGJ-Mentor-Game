@@ -17,6 +17,6 @@ MonoBehaviour:
   RewardText: Influence drones quicker
   upgradeStatToChange: 2
   upgradeStatDifference: 10
-  OccupationRequirements: 010000000100000001000000
-  VirtueRequirements: 
-  FlawRequirements: 0500000005000000
+  OccupationRequirements: 01000000
+  VirtueRequirements: 00000000
+  FlawRequirements: 05000000

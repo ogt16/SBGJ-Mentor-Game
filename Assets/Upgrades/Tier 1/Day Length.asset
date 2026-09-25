@@ -17,6 +17,6 @@ MonoBehaviour:
   RewardText: More hours in the day to influence people
   upgradeStatToChange: 3
   upgradeStatDifference: 20
-  OccupationRequirements: 
+  OccupationRequirements: 08000000
   VirtueRequirements: 
-  FlawRequirements: 0100000001000000
+  FlawRequirements: 01000000

@@ -18,5 +18,5 @@ MonoBehaviour:
   upgradeStatToChange: 2
   upgradeStatDifference: 10
   OccupationRequirements: 01000000
-  VirtueRequirements: 0000000005000000
+  VirtueRequirements: 
   FlawRequirements: 

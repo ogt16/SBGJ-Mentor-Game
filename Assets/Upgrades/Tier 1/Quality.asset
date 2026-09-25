@@ -16,7 +16,7 @@ MonoBehaviour:
   Icon: {fileID: 0}
   RewardText: Rarer drones spawn more often
   upgradeStatToChange: 4
-  upgradeStatDifference: 1
-  OccupationRequirements: 
+  upgradeStatDifference: 25
+  OccupationRequirements: 06000000
   VirtueRequirements: 
-  FlawRequirements: 090000000900000009000000
+  FlawRequirements: 09000000

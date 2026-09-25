@@ -17,6 +17,6 @@ MonoBehaviour:
   RewardText: More drones spawn
   upgradeStatToChange: 1
   upgradeStatDifference: 1
-  OccupationRequirements: 05000000
+  OccupationRequirements: 0500000005000000
   VirtueRequirements: 
-  FlawRequirements: 0200000002000000
+  FlawRequirements: 
