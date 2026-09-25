@@ -3,7 +3,7 @@ using JetBrains.Annotations;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class Day : MonoBehaviour
 {
     [SerializeField] CharacterGenerator characterGenerator;
@@ -11,25 +11,52 @@ public class Day : MonoBehaviour
 
     int droneQuota = 5;
     List<GameObject> drones;
-    public float DayLimit;
+    
     [SerializeField] Player player;
+
+    float passiveFollowerCount;
+    float passiveFollowerTimer;
+    float droneSpawnTimer;
+    float dayLimit;
+
+    Slider daySlider;
 
     private void Start()
     {
         drones = new List<GameObject>();
+        daySlider = FindAnyObjectByType<Slider>();
         //Apply Day Length upgrades
-        DayLimit = player.dayLength;
-        player.passiveFollowerTimer = 60;
+        dayLimit = GameData.Instance.dayLength;
+        daySlider.maxValue = dayLimit;
+        daySlider.value = dayLimit;
         while (drones.Count < droneQuota)
         {
             SpawnNewDrone();
         }
+        passiveFollowerCount = 0;
+        passiveFollowerTimer = GameData.Instance.passiveFollowerFrequency;
+        droneSpawnTimer = GameData.Instance.droneSpawnRate;
     }
 
     private void Update()
     {
-        DayLimit -= Time.deltaTime;
-        if (DayLimit < 0)
+        passiveFollowerTimer -= Time.deltaTime;
+        if (passiveFollowerTimer < 0)
+        {
+            passiveFollowerTimer = GameData.Instance.passiveFollowerFrequency;
+            passiveFollowerCount += GameData.Instance.passiveFollowerGain;
+        }
+
+        droneSpawnTimer -= Time.deltaTime;
+        if (droneSpawnTimer < 0 && drones.Count < droneQuota)
+        {
+            SpawnNewDrone();
+            droneSpawnTimer = GameData.Instance.droneSpawnRate;
+        }
+        dayLimit -= Time.deltaTime;
+        daySlider.value = dayLimit;
+        daySlider.handleRect.transform.Rotate(0, 0, -0.05f);
+        if (dayLimit < 0)
         {
             GoToNight();
         }
@@ -53,14 +80,9 @@ public class Day : MonoBehaviour
             drones.Remove(drone);
         }
 
-        while (drones.Count < droneQuota)
+        while (passiveFollowerCount>=1)
         {
-            SpawnNewDrone();
-        }
-
-        while (player.passiveFollowerCount>=1)
-        {
-            player.passiveFollowerCount--;
+            passiveFollowerCount--;
             SpawnNewPassiveFollower();
         }
     }
@@ -70,7 +92,8 @@ public class Day : MonoBehaviour
         GameObject newDrone = characterGenerator.GenerateCharacter();
         newDrone.transform.Find("InformationPanel").gameObject.SetActive(false);
         //Apply Starting Influence upgrades to Drones
-        newDrone.GetComponent<CharacterData>().influence = player.startingInfluence;
+        newDrone.GetComponent<Character>().influence = GameData.Instance.startingInfluence;
+        newDrone.GetComponent<Character>().transform.Find("InformationPanel").gameObject.transform.Find("Canvas").gameObject.transform.Find("InfluenceMeter").gameObject.GetComponent<Slider>().value = newDrone.GetComponent<Character>().influence;
         newDrone.transform.position = SelectSpawnPosition();
         drones.Add(newDrone);
     }
@@ -78,8 +101,10 @@ public class Day : MonoBehaviour
     void SpawnNewPassiveFollower()
     {
         GameObject newFollower = characterGenerator.GenerateCharacter();
-        newFollower.GetComponent<CharacterData>().influence = 100;
-        GameData.Instance.AddFollower(newFollower);
+
+        GameData.Instance.AddFollower(newFollower.GetComponent<Character>().data);
+        newFollower.GetComponent<Character>().influence = GameData.Instance.startingInfluence;
+
         newFollower.gameObject.SetActive(false);
 
     }
