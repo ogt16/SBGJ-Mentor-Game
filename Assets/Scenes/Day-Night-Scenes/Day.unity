@@ -2120,15 +2120,15 @@ MonoBehaviour:
   droneSpawnRate: 15
   influenceSpeed: 0.5
   dayLength: 120
-  quality: 0
+  quality: 25
   passiveFollowerGain: 0
   passiveFollowerFrequency: 60
   startingInfluence: 0
   walkSpeed: 10
-  skillCheckDifficulty: 0.1
+  skillCheckDifficulty: 0.15
   skillCheckPerfectReward: 20
-  skillCheckRecovery: 25
-  skillCheckFrequency: 6000
+  skillCheckRecovery: 10
+  skillCheckFrequency: 9500
 --- !u!4 &1786905323
 Transform:
   m_ObjectHideFlags: 0
