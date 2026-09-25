@@ -642,8 +642,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1325572100}
   - component: {fileID: 1325572099}
-  - component: {fileID: 1325572098}
   - component: {fileID: 1325572101}
+  - component: {fileID: 1325572102}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -651,14 +651,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1325572098
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1325572097}
-  m_Enabled: 1
 --- !u!20 &1325572099
 Camera:
   m_ObjectHideFlags: 0
@@ -769,6 +761,20 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &1325572102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325572097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioListener
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
 --- !u!1 &1446875180
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,7 +791,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1446875181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -801,17 +807,17 @@ MonoBehaviour:
   upgrades: []
   influenceRadius: 2
   droneSpawnRate: 15
-  influenceSpeed: 20
+  influenceSpeed: 0.5
   dayLength: 120
-  quality: 0
+  quality: 25
   passiveFollowerGain: 0
-  passiveFollowerFrequency: 0
+  passiveFollowerFrequency: 60
   startingInfluence: 0
   walkSpeed: 10
-  skillCheckDifficulty: 0
-  skillCheckPerfectReward: 0
-  skillCheckRecovery: 0
-  skillCheckFrequency: 0
+  skillCheckDifficulty: 0.15
+  skillCheckPerfectReward: 20
+  skillCheckRecovery: 10
+  skillCheckFrequency: 9500
 --- !u!4 &1446875182
 Transform:
   m_ObjectHideFlags: 0

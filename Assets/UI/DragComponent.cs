@@ -17,6 +17,8 @@ public class DragComponent : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
     {
         ChangeImageVisual(0.5f, false);
         InDrag = true;
+
+        FMODUnity.RuntimeManager.PlayOneShot("event:/sounds/pick up");
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -28,6 +30,9 @@ public class DragComponent : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
     {
         ChangeImageVisual(1f, true);
         InDrag = false;
+
+        FMODUnity.RuntimeManager.PlayOneShot("event:/sounds/drop");
+
 
         // if the card is not in a slot then return it to the carousel. --> if it WAS in a slot remove the slot data from the ritual
         // check if the card overlaps with the slot
@@ -43,8 +48,6 @@ public class DragComponent : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
                 // NOT IN A SLOT
                 transform.localPosition = CarouselPosition;            
                 ControllerReference.UpdateInformationPane();
-
-
             }
         }
         else
@@ -52,7 +55,6 @@ public class DragComponent : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
             // NOT IN A SLOT
             transform.localPosition = CarouselPosition;
             ControllerReference.UpdateInformationPane();
-
         }
     }
 

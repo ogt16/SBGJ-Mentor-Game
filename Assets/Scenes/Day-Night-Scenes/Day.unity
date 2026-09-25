@@ -1712,7 +1712,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &790086279
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2864,7 +2864,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1347908459
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3842,8 +3842,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1523009319}
   - component: {fileID: 1523009322}
-  - component: {fileID: 1523009321}
   - component: {fileID: 1523009320}
+  - component: {fileID: 1523009323}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -3910,14 +3910,6 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!81 &1523009321
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1523009318}
-  m_Enabled: 1
 --- !u!20 &1523009322
 Camera:
   m_ObjectHideFlags: 0
@@ -3927,8 +3919,8 @@ Camera:
   m_GameObject: {fileID: 1523009318}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -3969,6 +3961,20 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &1523009323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523009318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioListener
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
 --- !u!4 &1568837031 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6379381995550558993, guid: 50dc53465739cf640ba0f9fc92112283, type: 3}
@@ -4467,6 +4473,20 @@ MonoBehaviour:
   skillCheckPerfectReward: 20
   skillCheckRecovery: 10
   skillCheckFrequency: 9500
+  daymusic:
+    Guid:
+      Data1: 1548461599
+      Data2: 1092775455
+      Data3: -601546314
+      Data4: -786988668
+    Path: event:/music/day
+  nightmusic:
+    Guid:
+      Data1: -1459567002
+      Data2: 1099374070
+      Data3: -2061597803
+      Data4: 2145354414
+    Path: event:/music/night
 --- !u!4 &1786905323
 Transform:
   m_ObjectHideFlags: 0
