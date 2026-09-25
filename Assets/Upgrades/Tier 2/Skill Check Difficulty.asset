@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Skill Check Difficulty
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade
   DisplayName: Easier skill checks +
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 047142ea7e6c2734d8112def975a605d, type: 3}
   RewardText: Skill checks are more forgiving when influencing
   upgradeStatToChange: 8
-  upgradeStatDifference: 2
-  OccupationRequirements: 0d0000000d000000
+  upgradeStatDifference: 0.05
+  OccupationRequirements: 
   VirtueRequirements: 
-  FlawRequirements: 
+  FlawRequirements: 0000000000000000

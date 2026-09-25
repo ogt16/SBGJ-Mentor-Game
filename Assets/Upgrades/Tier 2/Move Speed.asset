@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Move Speed
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade
   DisplayName: Track and field career +
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 50017cb1c833e654788754f5f26e1523, type: 3}
   RewardText: Run around faster
   upgradeStatToChange: 7
   upgradeStatDifference: 2

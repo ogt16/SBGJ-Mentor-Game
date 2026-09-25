@@ -1026,8 +1026,8 @@ GameObject:
   - component: {fileID: 970250557}
   - component: {fileID: 970250556}
   m_Layer: 5
-  m_Name: Canvas
-  m_TagString: Untagged
+  m_Name: DayCanvas
+  m_TagString: DayCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1153,7 +1153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 92.27, y: -22.9}
+  m_AnchoredPosition: {x: 92.27002, y: -22.900024}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1347908460
@@ -2118,17 +2118,17 @@ MonoBehaviour:
   upgrades: []
   influenceRadius: 2
   droneSpawnRate: 15
-  influenceSpeed: 1
+  influenceSpeed: 0.5
   dayLength: 120
-  quality: 0
+  quality: 25
   passiveFollowerGain: 0
   passiveFollowerFrequency: 60
   startingInfluence: 0
   walkSpeed: 10
-  skillCheckDifficulty: 0
-  skillCheckPerfectReward: 0
-  skillCheckRecovery: 0
-  skillCheckFrequency: 0
+  skillCheckDifficulty: 0.15
+  skillCheckPerfectReward: 20
+  skillCheckRecovery: 10
+  skillCheckFrequency: 9500
 --- !u!4 &1786905323
 Transform:
   m_ObjectHideFlags: 0
@@ -2160,6 +2160,10 @@ PrefabInstance:
       propertyPath: walkSpeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5139863855903539489, guid: 50dc53465739cf640ba0f9fc92112283, type: 3}
+      propertyPath: skillCheck
+      value: 
+      objectReference: {fileID: 8748126178234086796, guid: 36bdae6c047e7c1439d40f84dfa82245, type: 3}
     - target: {fileID: 5139863855903539489, guid: 50dc53465739cf640ba0f9fc92112283, type: 3}
       propertyPath: influenceSpeed
       value: 50

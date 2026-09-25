@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Passive Follower Gain
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade
   DisplayName: Internet Outreach
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: ecfe88c1c36ae624e8cc17adba3f76d2, type: 3}
   RewardText: Gain followers from sitting around doing nothing!
   upgradeStatToChange: 5
   upgradeStatDifference: 1

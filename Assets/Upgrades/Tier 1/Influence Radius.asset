@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Influence Radius
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade
   DisplayName: Naturally loud voice
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 455bc5074cc397a48ad9546c0cf0a38c, type: 3}
   RewardText: Influence drones from further away
   upgradeStatToChange: 0
   upgradeStatDifference: 1
-  OccupationRequirements: 
-  VirtueRequirements: 0600000006000000
+  OccupationRequirements: 00000000
+  VirtueRequirements: 
   FlawRequirements: 

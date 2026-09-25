@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Spawn Rate
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade
   DisplayName: Busy day today ++
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 52f4fd5ddb08af848b73b5c5b80018d0, type: 3}
   RewardText: More drones spawn
   upgradeStatToChange: 1
-  upgradeStatDifference: 3
-  OccupationRequirements: 0500000005000000
+  upgradeStatDifference: -3
+  OccupationRequirements: 05000000
   VirtueRequirements: 04000000
-  FlawRequirements: 070000000700000007000000
+  FlawRequirements: 0700000007000000

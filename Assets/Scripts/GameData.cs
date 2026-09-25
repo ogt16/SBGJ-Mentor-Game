@@ -12,15 +12,15 @@ public class GameData : MonoBehaviour
     public float droneSpawnRate = 15;
     public float influenceSpeed = 1;
     public float dayLength = 120;
-    public float quality;
+    public float quality = 25;
     public float passiveFollowerGain = 0;
     public float passiveFollowerFrequency = 60; // No upgrade for this
     public float startingInfluence = 0;
     public float walkSpeed = 10;
-    public float skillCheckDifficulty;
-    public float skillCheckPerfectReward;
-    public float skillCheckRecovery;
-    public float skillCheckFrequency;
+    public float skillCheckDifficulty = 0.15f;  //Target width
+    public float skillCheckPerfectReward = 20;  //Influence gain from hitting
+    public float skillCheckRecovery = 10;  //Lose less Influence
+    public float skillCheckFrequency = 9000;  //Percentage chance for Skill Check spawn
 
     private void Awake() 
     { 
