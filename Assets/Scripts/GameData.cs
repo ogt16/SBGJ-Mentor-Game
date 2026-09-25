@@ -11,7 +11,7 @@ public class GameData : MonoBehaviour
     //Upgradable Stats + starting values
     public float influenceRadius = 2;
     public float droneSpawnRate = 15;
-    public float influenceSpeed = 1;
+    public float influenceSpeed = 0.5f;
     public float dayLength = 120;
     public float quality = 25;
     public float passiveFollowerGain = 0;
@@ -21,7 +21,7 @@ public class GameData : MonoBehaviour
     public float skillCheckDifficulty = 0.15f;  //Target width
     public float skillCheckPerfectReward = 20;  //Influence gain from hitting
     public float skillCheckRecovery = 10;  //Lose less Influence
-    public float skillCheckFrequency = 9000;  //Percentage chance for Skill Check spawn
+    public float skillCheckFrequency = 9500;  //Percentage chance for Skill Check spawn
 
 
 
