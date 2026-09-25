@@ -37,8 +37,8 @@ public class SkillCheck : MonoBehaviour
         inTarget = false;
 
         trueWidth = targetWidth * (transform.Find("Target").gameObject.GetComponent<RectTransform>().rect.max.x - transform.Find("Target").gameObject.GetComponent<RectTransform>().rect.min.x);
-        targetMiddleX = Random.Range(trueWidth, sliderWidth - trueWidth);
-        //targetMiddleX = Random.Range(-20, 70);
+        //targetMiddleX = Random.Range(trueWidth, sliderWidth - trueWidth);
+        targetMiddleX = Random.Range(-20, 70);
         transform.Find("Target").gameObject.transform.localPosition =new Vector3(targetMiddleX, 0 ,0);
         transform.Find("Target").gameObject.transform.localScale = new Vector3(targetWidth, 1, 0);
         Debug.Log(transform.Find("Target").gameObject.GetComponent<RectTransform>().rect.max.x - transform.Find("Target").gameObject.GetComponent<RectTransform>().rect.min.x);
@@ -64,7 +64,7 @@ public class SkillCheck : MonoBehaviour
         //    inTarget = false;
         //}
         //Debug.Log(inTarget);
-        GetComponent<Slider>().value+=2;
+        GetComponent<Slider>().value+=4;
         if (GetComponent<Slider>().value >= GetComponent<Slider>().maxValue)
         {
             player.SkillCheckMiss();
