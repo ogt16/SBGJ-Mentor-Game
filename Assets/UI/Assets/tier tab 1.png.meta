@@ -1,22 +1,22 @@
 fileFormatVersion: 2
-guid: 755fc26788425f7428a77f72a682f39f
+guid: 53c4f43928fc60340a8fd74d127e39d5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6501104695894028916
-    second: tier tab_0
+      213: -2810617305256379008
+    second: tier tab 1_0
   - first:
-      213: -636632655620047811
-    second: tier tab_1
+      213: -4679433593806281870
+    second: tier tab 1_1
   - first:
-      213: 2454096041878915699
-    second: tier tab_2
+      213: -3897009741852566760
+    second: tier tab 1_2
   - first:
-      213: -1243301298271128750
-    second: tier tab_3
+      213: -4663347277442339389
+    second: tier tab 1_3
   - first:
-      213: -7896816240792049142
-    second: tier tab_4
+      213: 7569228170481360394
+    second: tier tab 1_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -112,7 +112,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tier tab_0
+      name: tier tab 1_0
       rect:
         serializedVersion: 2
         x: 35
@@ -127,14 +127,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 472336ec640983a50800000000000000
-      internalID: 6501104695894028916
+      spriteID: 08db0a0c37eaef8d0800000000000000
+      internalID: -2810617305256379008
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tier tab_1
+      name: tier tab 1_1
       rect:
         serializedVersion: 2
         x: 496
@@ -149,14 +149,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d3c7a5509f93a27f0800000000000000
-      internalID: -636632655620047811
+      spriteID: 273a52b60ff4f0fb0800000000000000
+      internalID: -4679433593806281870
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tier tab_2
+      name: tier tab 1_2
       rect:
         serializedVersion: 2
         x: 557
@@ -171,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 37a82e40953be0220800000000000000
-      internalID: 2454096041878915699
+      spriteID: 81b14aa794a0be9c0800000000000000
+      internalID: -3897009741852566760
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tier tab_3
+      name: tier tab 1_3
       rect:
         serializedVersion: 2
         x: 399
@@ -193,14 +193,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 25374c77e08eebee0800000000000000
-      internalID: -1243301298271128750
+      spriteID: 3cda3cfcb56784fb0800000000000000
+      internalID: -4663347277442339389
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tier tab_4
+      name: tier tab 1_4
       rect:
         serializedVersion: 2
         x: 1369
@@ -215,8 +215,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a0aed07d77fd86290800000000000000
-      internalID: -7896816240792049142
+      spriteID: a0edb65eaec4b0960800000000000000
+      internalID: 7569228170481360394
       vertices: []
       indices: 
       edges: []
@@ -235,11 +235,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      tier tab_0: 6501104695894028916
-      tier tab_1: -636632655620047811
-      tier tab_2: 2454096041878915699
-      tier tab_3: -1243301298271128750
-      tier tab_4: -7896816240792049142
+      tier tab 1_0: -2810617305256379008
+      tier tab 1_1: -4679433593806281870
+      tier tab 1_2: -3897009741852566760
+      tier tab 1_3: -4663347277442339389
+      tier tab 1_4: 7569228170481360394
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

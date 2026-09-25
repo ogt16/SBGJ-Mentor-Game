@@ -157,7 +157,10 @@ public class CultController : MonoBehaviour
         switch (Tier)
         {
             case 1:
-                RitualUpgradeScreen.transform.Find("GridBacking").gameObject.GetComponent<Image>().color = new Color(0, 44, 58, 128);
+                Color BGColour   = new Color(0, 44, 58);
+                BGColour.a       = 0.55f;
+                RitualUpgradeScreen.transform.Find("GridBacking").gameObject.GetComponent<Image>().color = BGColour;
+
 
                 for(int i = 0; i < Tier1Upgrades.Length; i ++)
                 {
@@ -166,7 +169,9 @@ public class CultController : MonoBehaviour
                 break;
 
             case 2:
-                RitualUpgradeScreen.transform.Find("GridBacking").gameObject.GetComponent<Image>().color = new Color(44, 0, 58, 128);
+                Color BGColour2 = new Color(44, 0, 58);
+                BGColour2.a     = 0.55f;
+                RitualUpgradeScreen.transform.Find("GridBacking").gameObject.GetComponent<Image>().color = BGColour2;
 
                 for(int i = 0; i < Tier2Upgrades.Length; i ++)
                 {
@@ -175,7 +180,10 @@ public class CultController : MonoBehaviour
                 break;
 
             case 3:
-                RitualUpgradeScreen.transform.Find("GridBacking").gameObject.GetComponent<Image>().color = new Color(58, 44, 0, 128);
+                Color BGColour3   = new Color(58, 44, 0);
+                BGColour.a       = 0.55f;
+
+                RitualUpgradeScreen.transform.Find("GridBacking").gameObject.GetComponent<Image>().color = BGColour3;
 
                 for(int i = 0; i < Tier3Upgrades.Length; i ++)
                 {
