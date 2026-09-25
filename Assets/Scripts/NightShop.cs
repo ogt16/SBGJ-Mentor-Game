@@ -7,6 +7,7 @@ public class NightShop : MonoBehaviour
 {
     public void GoBackToDay()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("time change");
         SceneManager.LoadScene("Day");
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameData : MonoBehaviour
 {
@@ -22,6 +23,21 @@ public class GameData : MonoBehaviour
     public float skillCheckRecovery = 10;  //Lose less Influence
     public float skillCheckFrequency = 9000;  //Percentage chance for Skill Check spawn
 
+
+
+
+
+    // Audio
+
+    float volume = 0.75f;
+    bool first = false;
+
+    public FMODUnity.EventReference daymusic;
+    public FMODUnity.EventReference nightmusic;
+
+    FMOD.Studio.EventInstance daym;
+    FMOD.Studio.EventInstance nightm;
+
     private void Awake() 
     { 
         // If there is an instance, and it's not me, delete myself.
@@ -36,9 +52,59 @@ public class GameData : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         } 
 
+        
+
         followers = new List<CharacterData>();
     }
-    
+
+    private void Update()
+    {
+
+
+        if (!first)
+        {
+            daymusic = FMODUnity.EventReference.Find("event:/music/day");
+            nightmusic = FMODUnity.EventReference.Find("event:/music/night");
+            daym = FMODUnity.RuntimeManager.CreateInstance(daymusic);
+            nightm = FMODUnity.RuntimeManager.CreateInstance(nightmusic);
+            daym.setVolume(volume);
+            nightm.setVolume(volume);
+
+            Debug.Log("Go");
+            daym.start();
+            nightm.start();
+            first = true;
+            nightm.setPaused(false);
+            daym.setPaused(true);
+        }
+
+        FMOD.Studio.PLAYBACK_STATE state;
+        FMOD.Studio.PLAYBACK_STATE state1;
+        daym.getPlaybackState(out state);
+        nightm.getPlaybackState(out state1);
+
+        if (state != FMOD.Studio.PLAYBACK_STATE.PLAYING) 
+        daym.start();
+        if (state1 != FMOD.Studio.PLAYBACK_STATE.PLAYING) 
+        nightm.start();
+
+        string name = SceneManager.GetActiveScene().name;
+        if (name == "Day")
+        {
+            nightm.setPaused(true);
+            daym.setPaused(false);
+        }
+        else if (name == "Night")
+        {
+            nightm.setPaused(false);
+            daym.setPaused(true);
+        }
+        
+    }
+
+
+
+
     public void AddFollower(CharacterData follower)
     {
 

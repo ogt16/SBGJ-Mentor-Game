@@ -98,10 +98,12 @@ public class SkillCheck : MonoBehaviour
         if (targetMiddleX - (trueWidth / 2) <= slider.value && slider.value <= targetMiddleX + (trueWidth / 2))
         {
             Debug.Log("Skill check hit");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/sounds/follower gain");
             return true;
         }
         else
         {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/sounds/follower loss");
             return false;
         }
         //Debug.Log("Attack sent!");

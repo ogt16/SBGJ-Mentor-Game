@@ -124,6 +124,7 @@ public class Day : MonoBehaviour
 
     public void GoToNight()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/sounds/time change");
         SceneManager.LoadScene("Night");
     }
 }

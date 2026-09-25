@@ -28,6 +28,8 @@ public class Menu : MonoBehaviour
 
     public void PlayButtonPressed()
     {
+
+        FMODUnity.RuntimeManager.PlayOneShot("event:/sounds/button press");
         unpressedImage.gameObject.SetActive(false);
         hoverImage.gameObject.SetActive(false);
         pressedImage.gameObject.SetActive(true);

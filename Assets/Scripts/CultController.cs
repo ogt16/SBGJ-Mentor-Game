@@ -22,6 +22,7 @@ public class CultController : MonoBehaviour
     public GameObject FollowerContainer;
     public GameObject FollowerCardPrefab;
     public GameObject HoverDataBlock;
+    public GameObject UnlockText;
     public GameObject[] RitualGridSlots;
 
     [Header("Upgrade Data")]
@@ -302,6 +303,7 @@ public class CultController : MonoBehaviour
         }
 
         // All the slots are filled
+        FMODUnity.RuntimeManager.PlayOneShot("event:/sounds/ritual");
         CompleteRitual();
     }
 
@@ -489,6 +491,8 @@ public class CultController : MonoBehaviour
 
                 // Returns false if the upgrade is already unlocked
                 bool success = GameData.Instance.TryUpgrade(_upgrade);
+                UnlockText.GetComponent<TextMeshProUGUI>().SetText($"Unlocked: {_upgrade.DisplayName}");
+
 
                 // this is the block of code to actually deal with unlocking the upgrades
                 /* 
