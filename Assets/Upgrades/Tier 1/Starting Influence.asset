@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Starting Influence
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade
   DisplayName: Subconscious Advertisement
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 3643fdf0bbff82240bd2c694cc8e101d, type: 3}
   RewardText: Drones start more influenced
   upgradeStatToChange: 6
   upgradeStatDifference: 1
