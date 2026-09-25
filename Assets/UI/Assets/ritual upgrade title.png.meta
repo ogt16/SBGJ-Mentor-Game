@@ -1,0 +1,585 @@
+fileFormatVersion: 2
+guid: 0abee14211b4370448afe00a6666bcdd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7623677935238527954
+    second: ritual upgrade title_0
+  - first:
+      213: 6158061693157789432
+    second: ritual upgrade title_1
+  - first:
+      213: -3625510731781833179
+    second: ritual upgrade title_2
+  - first:
+      213: -9067266151134391801
+    second: ritual upgrade title_3
+  - first:
+      213: 8255736868083165977
+    second: ritual upgrade title_4
+  - first:
+      213: -5669257852579868056
+    second: ritual upgrade title_5
+  - first:
+      213: -3149934087600518805
+    second: ritual upgrade title_6
+  - first:
+      213: 5326269482066273785
+    second: ritual upgrade title_7
+  - first:
+      213: 6663210486432261116
+    second: ritual upgrade title_8
+  - first:
+      213: 8112135522679853658
+    second: ritual upgrade title_9
+  - first:
+      213: 7965236277799496825
+    second: ritual upgrade title_10
+  - first:
+      213: 6484853728276658244
+    second: ritual upgrade title_11
+  - first:
+      213: -334693091772350043
+    second: ritual upgrade title_12
+  - first:
+      213: -6711888597934152967
+    second: ritual upgrade title_13
+  - first:
+      213: 5911331692887167234
+    second: ritual upgrade title_14
+  - first:
+      213: -6954732719592438382
+    second: ritual upgrade title_15
+  - first:
+      213: -2044029991833605170
+    second: ritual upgrade title_16
+  - first:
+      213: -5863478159557991713
+    second: ritual upgrade title_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ritual upgrade title_0
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 410
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e24cf145f41433690800000000000000
+      internalID: -7623677935238527954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ritual upgrade title_1
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 31
+        width: 304
+        height: 405
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fe4c9dab74d57550800000000000000
+      internalID: 6158061693157789432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ritual upgrade title_2
+      rect:
+        serializedVersion: 2
+        x: 937
+        y: 96
+        width: 26
+        height: 340
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52ef6ceb2399fadc0800000000000000
+      internalID: -3625510731781833179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ritual upgrade title_3
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 112
+        width: 328
+        height: 292
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70216b9d9799a2280800000000000000
+      internalID: -9067266151134391801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ritual upgrade title_4
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 370
+        width: 304
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91b6135d0f4429270800000000000000
+      internalID: 8255736868083165977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ritual upgrade title_5
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 31
+        width: 51
+        height: 341
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86212e42500c251b0800000000000000
+      internalID: -5669257852579868056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ritual upgrade title_6
+      rect:
+        serializedVersion: 2
+        x: 977
+        y: 31
+        width: 377
+        height: 373
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b694daae2af2944d0800000000000000
+      internalID: -3149934087600518805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ritual upgrade title_7
+      rect:
+        serializedVersion: 2
+        x: 1515
+        y: 112
+        width: 149
+        height: 292
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f56098cfd5bae940800000000000000
+      internalID: 5326269482066273785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ritual upgrade title_8
+      rect:
+        serializedVersion: 2
+        x: 1670
+        y: 31
+        width: 116
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf3e37b52aa787c50800000000000000
+      internalID: 6663210486432261116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ritual upgrade title_9
+      rect:
+        serializedVersion: 2
+        x: 2021
+        y: 96
+        width: 132
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5219272748149070800000000000000
+      internalID: 8112135522679853658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ritual upgrade title_10
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 96
+        width: 83
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97c2b4a61343a8e60800000000000000
+      internalID: 7965236277799496825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ritual upgrade title_11
+      rect:
+        serializedVersion: 2
+        x: 1703
+        y: 80
+        width: 157
+        height: 195
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4483c4e8b14def950800000000000000
+      internalID: 6484853728276658244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ritual upgrade title_12
+      rect:
+        serializedVersion: 2
+        x: 1817
+        y: 80
+        width: 239
+        height: 268
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a1c124086eea5bf0800000000000000
+      internalID: -334693091772350043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ritual upgrade title_13
+      rect:
+        serializedVersion: 2
+        x: 2086
+        y: 96
+        width: 434
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f2e32c91e49ad2a0800000000000000
+      internalID: -6711888597934152967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ritual upgrade title_14
+      rect:
+        serializedVersion: 2
+        x: 2363
+        y: 184
+        width: 174
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2015c08ead4490250800000000000000
+      internalID: 5911331692887167234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ritual upgrade title_15
+      rect:
+        serializedVersion: 2
+        x: 774
+        y: 72
+        width: 189
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29508e47073db7f90800000000000000
+      internalID: -6954732719592438382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ritual upgrade title_16
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 15
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecb638a5d8522a3e0800000000000000
+      internalID: -2044029991833605170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ritual upgrade title_17
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 15
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd2e84f0eadb0aea0800000000000000
+      internalID: -5863478159557991713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ritual upgrade title_0: -7623677935238527954
+      ritual upgrade title_1: 6158061693157789432
+      ritual upgrade title_10: 7965236277799496825
+      ritual upgrade title_11: 6484853728276658244
+      ritual upgrade title_12: -334693091772350043
+      ritual upgrade title_13: -6711888597934152967
+      ritual upgrade title_14: 5911331692887167234
+      ritual upgrade title_15: -6954732719592438382
+      ritual upgrade title_16: -2044029991833605170
+      ritual upgrade title_17: -5863478159557991713
+      ritual upgrade title_2: -3625510731781833179
+      ritual upgrade title_3: -9067266151134391801
+      ritual upgrade title_4: 8255736868083165977
+      ritual upgrade title_5: -5669257852579868056
+      ritual upgrade title_6: -3149934087600518805
+      ritual upgrade title_7: 5326269482066273785
+      ritual upgrade title_8: 6663210486432261116
+      ritual upgrade title_9: 8112135522679853658
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
