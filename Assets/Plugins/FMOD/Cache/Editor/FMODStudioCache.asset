@@ -123,7 +123,7 @@ MonoBehaviour:
   Path: FMOD/build/build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639259380857060714
+  lastModified: 639259410784489477
   FileSizes: []
   Exists: 1
 --- !u!114 &-5574681874766553917
@@ -211,7 +211,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 4170992915424294951}
   cacheVersion: 131860
-  cacheTime: 639259380857160507
+  cacheTime: 639259410784505179
   SerializableEventsDict:
   - key: event:/sounds/ritual
     index: 0
@@ -246,7 +246,7 @@ MonoBehaviour:
   Path: FMOD/build/build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639259380857160507
+  lastModified: 639259410784505179
   FileSizes:
   - Name: 
     Value: 1136

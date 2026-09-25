@@ -63,8 +63,8 @@ public class GameData : MonoBehaviour
 
         if (!first)
         {
-            daymusic = FMODUnity.EventReference.Find("event:/music/day");
-            nightmusic = FMODUnity.EventReference.Find("event:/music/night");
+            daymusic = FMODUnity.RuntimeManager.PathToEventReference("event:/music/day");
+            nightmusic = FMODUnity.RuntimeManager.PathToEventReference("event:/music/night");
             daym = FMODUnity.RuntimeManager.CreateInstance(daymusic);
             nightm = FMODUnity.RuntimeManager.CreateInstance(nightmusic);
             daym.setVolume(volume);
