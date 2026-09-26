@@ -17,6 +17,6 @@ MonoBehaviour:
   RewardText: Skill checks are more forgiving when influencing
   upgradeStatToChange: 8
   upgradeStatDifference: 0.1
-  OccupationRequirements: 0d000000
+  OccupationRequirements: 0e000000
   VirtueRequirements: 
   FlawRequirements: 000000000000000000000000
